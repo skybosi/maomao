@@ -1,0 +1,8 @@
+*.db
+*.opendb
+*.lib
+*.a
+*.dll
+*.so
+*.vs
+*.*~
