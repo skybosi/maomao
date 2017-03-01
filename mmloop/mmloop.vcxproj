@@ -161,6 +161,7 @@
     <Lib>
       <AdditionalLibraryDirectories>../libuv/$(ConfigurationName)\$(PlatformName);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <OutputFile>$(ConfigurationName)\$(PlatformName)\mmloop.lib</OutputFile>
+      <TargetMachine />
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
