@@ -107,6 +107,7 @@ int main(int argc,char* argv[])
 			udpsendTest(argc,argv);
 			break;
 		default:
+			std::cout << str << ": invalid option! You can chose: async, dns, idle, files, timer, pipeC, pipeS, tcpC, tcpS, udpC, udpS, udpsend.  \nNOTE: some C/S mode must match" << std::endl;
 			break;
 		}
 		argc--;
