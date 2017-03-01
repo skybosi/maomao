@@ -1,12 +1,11 @@
 #pragma once
-
 #ifndef __MMLOOP_MT_H__
 #define __MMLOOP_MT_H__
 #include <stdlib.h>
 #include "mmloop.h"
 namespace mm {
 	namespace Loop {
-class ZQ_ELOOP_API ThreadPool;
+class MM_LOOP_API ThreadPool;
 	
 		// ---------------------------------------
 		// class ThreadPool

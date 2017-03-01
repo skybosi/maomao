@@ -17,25 +17,25 @@
 #  define _WIN64
 #endif
 #if defined(WIN64) || defined(WIN32) || defined(_Windows) || defined(__MINGW32__)
-#  define ZQ_OS_MSWIN
+#  define OS_MSWIN
 #elif defined (__linux) || defined (__linux__) || defined(_MSYS)
 #  define ZQ_OS_LINUX
 #else
 #error unsupported operating system
 #endif
 
-#ifndef ELOOP_EXPORTS
-#define ELOOP_EXPORTS
+#ifndef MMLOOP_EXPORTS
+#define MMLOOP_EXPORTS
 #endif
 
-#ifdef ZQ_OS_MSWIN
-#  ifdef ELOOP_EXPORTS
-#    define ZQ_ELOOP_API __declspec(dllexport)
+#ifdef OS_MSWIN
+#  ifdef MMLOOP_EXPORTS
+#    define MM_LOOP_API __declspec(dllexport)
 #  else
-#    define ZQ_ELOOP_API __declspec(dllimport)
+#    define MM_LOOP_API __declspec(dllimport)
 #  endif
 #else
-#  define ZQ_ELOOP_API
+#  define MM_LOOP_API
 #endif // OS
 
 typedef unsigned int  uint;

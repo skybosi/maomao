@@ -10,15 +10,15 @@
 
 namespace mm {
 	namespace Loop {
-class ZQ_ELOOP_API FileEvent;
-class ZQ_ELOOP_API File;
-class ZQ_ELOOP_API Pipe;
+class MM_LOOP_API FileEvent;
+class MM_LOOP_API File;
+class MM_LOOP_API Pipe;
 
 #ifndef FLAG
 #  define FLAG(_F)  (1<<_F)
 #endif // FLAG
 
-#ifdef ZQ_OS_MSWIN
+#ifdef OS_MSWIN
 
 # ifndef S_IRUSR
 #  define S_IRUSR _S_IREAD

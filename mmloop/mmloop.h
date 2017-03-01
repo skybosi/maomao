@@ -7,13 +7,13 @@
 
 namespace mm {
 namespace Loop {
-	class ZQ_ELOOP_API Loop;
-	class ZQ_ELOOP_API Handle;
-	class ZQ_ELOOP_API Idle;
-	class ZQ_ELOOP_API Timer;
-	class ZQ_ELOOP_API Async;
-	class ZQ_ELOOP_API Signal;
-	class ZQ_ELOOP_API CpuInfo;
+	class MM_LOOP_API Loop;
+	class MM_LOOP_API Handle;
+	class MM_LOOP_API Idle;
+	class MM_LOOP_API Timer;
+	class MM_LOOP_API Async;
+	class MM_LOOP_API Signal;
+	class MM_LOOP_API CpuInfo;
 	class Loop;
 	// -----------------------------
 	// class Handle

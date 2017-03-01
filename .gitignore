@@ -6,3 +6,7 @@
 *.so
 *.vs
 *.*~
+Release/*
+Debug/*
+*/Release/*
+*/Debug/*

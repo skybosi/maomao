@@ -9,10 +9,10 @@
 
 namespace mm {
 	namespace Loop {
-class ZQ_ELOOP_API Stream;
-class ZQ_ELOOP_API TCP;
-class ZQ_ELOOP_API UDP;
-class ZQ_ELOOP_API DNS;
+class MM_LOOP_API Stream;
+class MM_LOOP_API TCP;
+class MM_LOOP_API UDP;
+class MM_LOOP_API DNS;
 		// -----------------------------
 		// class Stream
 		// -----------------------------

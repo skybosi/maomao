@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\pipeTest">
+      <UniqueIdentifier>{2cea4951-f247-46f2-b83c-93257ca8f8c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tcpTest">
+      <UniqueIdentifier>{2c270a0f-3bc9-4bf3-b43a-440adabf69e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\udpTest">
+      <UniqueIdentifier>{67dba3e2-e182-4ba8-98c5-b2c20afed2ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\udpTest\udpClient">
+      <UniqueIdentifier>{bf0d1d1c-9c64-40db-9df5-a9185579151e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tcpTest\tcpClient">
+      <UniqueIdentifier>{d2bb5ee9-7b4a-4f01-90e3-d0b9eb78091e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\tcpTest\tcpServer">
+      <UniqueIdentifier>{8208d707-2840-4afa-86b4-cf0f928a7323}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\udpTest\udpServer">
+      <UniqueIdentifier>{6ac31b5d-fd5d-4e3c-8ce5-78b8fc33a79f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\udpsendTest">
+      <UniqueIdentifier>{ed41f686-d678-47fb-908c-a4ecfe5115b4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="async.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="idle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pipeClient.cpp">
+      <Filter>Source Files\pipeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="pipeServer.cpp">
+      <Filter>Source Files\pipeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_udpClient\main.cpp">
+      <Filter>Source Files\udpTest\udpClient</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_udpClient\udpClient.cpp">
+      <Filter>Source Files\udpTest\udpClient</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_tcpClient\main.cpp">
+      <Filter>Source Files\tcpTest\tcpClient</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_tcpClient\tcpClient.cpp">
+      <Filter>Source Files\tcpTest\tcpClient</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_TcpServer\main.cpp">
+      <Filter>Source Files\tcpTest\tcpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_TcpServer\tcpServer.cpp">
+      <Filter>Source Files\tcpTest\tcpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_udpServer\main.cpp">
+      <Filter>Source Files\udpTest\udpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_udpServer\udpServer.cpp">
+      <Filter>Source Files\udpTest\udpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="udpsend\main.cpp">
+      <Filter>Source Files\udpsendTest</Filter>
+    </ClCompile>
+    <ClCompile Include="udpsend\udpsend.cpp">
+      <Filter>Source Files\udpsendTest</Filter>
+    </ClCompile>
+    <ClCompile Include="getopt.cpp">
+      <Filter>Source Files\udpsendTest</Filter>
+    </ClCompile>
+    <ClCompile Include="dns.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Test_udpClient\udpClient.h">
+      <Filter>Source Files\udpTest\udpClient</Filter>
+    </ClInclude>
+    <ClInclude Include="Test_tcpClient\tcpClient.h">
+      <Filter>Source Files\tcpTest\tcpClient</Filter>
+    </ClInclude>
+    <ClInclude Include="Test_TcpServer\tcpServer.h">
+      <Filter>Source Files\tcpTest\tcpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="Test_udpServer\udpServer.h">
+      <Filter>Source Files\udpTest\udpServer</Filter>
+    </ClInclude>
+    <ClInclude Include="udpsend\udpsend.h">
+      <Filter>Source Files\udpsendTest</Filter>
+    </ClInclude>
+    <ClInclude Include="getopt.h">
+      <Filter>Source Files\udpsendTest</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

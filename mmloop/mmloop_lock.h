@@ -6,8 +6,8 @@
 
 namespace mm {
 	namespace Loop {
-class ZQ_ELOOP_API Mutex;
-class ZQ_ELOOP_API Condition;
+class MM_LOOP_API Mutex;
+class MM_LOOP_API Condition;
 		// -----------------------------
 		// class Mutex
 		// -----------------------------
