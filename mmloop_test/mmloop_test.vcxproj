@@ -128,8 +128,8 @@
     <ClCompile Include="getopt.cpp" />
     <ClCompile Include="idle.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="pipeClient.cpp" />
-    <ClCompile Include="pipeServer.cpp" />
+    <ClCompile Include="Test_pipe\pipeClient.cpp" />
+    <ClCompile Include="Test_pipe\pipeServer.cpp" />
     <ClCompile Include="Test_tcpClient\tcpClientTest.cpp" />
     <ClCompile Include="Test_tcpClient\tcpClient.cpp" />
     <ClCompile Include="Test_TcpServer\tcpServerTest.cpp" />

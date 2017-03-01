@@ -19,7 +19,7 @@
 #if defined(WIN64) || defined(WIN32) || defined(_Windows) || defined(__MINGW32__)
 #  define OS_MSWIN
 #elif defined (__linux) || defined (__linux__) || defined(_MSYS)
-#  define ZQ_OS_LINUX
+#  define OS_LINUX
 #else
 #error unsupported operating system
 #endif

@@ -9,6 +9,7 @@
 */
 extern int asyncTest();
 extern int dnsTest();
+extern int idleTest();
 extern int filesTest();
 extern int timerTest();
 extern int pipeClientTest();
@@ -67,6 +68,9 @@ int main(int argc,char* argv[])
 			break;
 		case "dns"_hash:
 			dnsTest();
+			break;
+		case "idle"_hash:
+			idleTest();
 			break;
 		case "files"_hash:
 			filesTest();

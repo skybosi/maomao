@@ -32,7 +32,6 @@ public:
 	virtual void OnRead(size_t nread, const char *buf)
 	{
 		printf("recv data:%s,len = %d\n", buf,nread);
-
 		write(buf,nread);
 	}
 

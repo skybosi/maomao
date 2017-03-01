@@ -51,12 +51,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pipeClient.cpp">
-      <Filter>Source Files\pipeTest</Filter>
-    </ClCompile>
-    <ClCompile Include="pipeServer.cpp">
-      <Filter>Source Files\pipeTest</Filter>
-    </ClCompile>
     <ClCompile Include="Test_udpClient\udpClient.cpp">
       <Filter>Source Files\udpTest\udpClient</Filter>
     </ClCompile>
@@ -95,6 +89,12 @@
     </ClCompile>
     <ClCompile Include="Test_tcpClient\tcpClientTest.cpp">
       <Filter>Source Files\tcpTest\tcpClient</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_pipe\pipeClient.cpp">
+      <Filter>Source Files\pipeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_pipe\pipeServer.cpp">
+      <Filter>Source Files\pipeTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
