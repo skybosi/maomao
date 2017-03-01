@@ -84,7 +84,7 @@ namespace mm {
 			//			Stream* self = static_cast<Stream *>(handle);
 			Stream* self = static_cast<Stream *>(stream->data);
 			if (self != NULL) {
-				self->OnShutdown((ElpeError)status);
+				self->OnShutdown((mmerrno)status);
 			}
 			delete req;
 		}
@@ -93,7 +93,7 @@ namespace mm {
 
 			Stream* self = static_cast<Stream *>(stream->data);
 			if (self != NULL) {
-				self->doAccept((ElpeError)status);
+				self->doAccept((mmerrno)status);
 			}
 		}
 
@@ -134,7 +134,7 @@ namespace mm {
 
 			Stream* self = static_cast<Stream *>(stream->data);
 			if (self != NULL) {
-				self->OnWrote((ElpeError)status);
+				self->OnWrote((mmerrno)status);
 			}
 			delete req;
 		}
@@ -267,7 +267,7 @@ namespace mm {
 
 
 			if (self != NULL) {
-				self->OnConnected((ElpeError)status);
+				self->OnConnected((mmerrno)status);
 			}
 
 			delete req;
@@ -427,7 +427,7 @@ namespace mm {
 
 			UDP* self = static_cast<UDP *>(udp->data);
 			if (self != NULL) {
-				self->OnSent((ElpeError)status);
+				self->OnSent((mmerrno)status);
 			}
 			delete req;
 		}
@@ -478,7 +478,7 @@ namespace mm {
 			{
 				char addr[17] = { '\0' };
 				uv_ip4_name((struct sockaddr_in*) res->ai_addr, addr, 16);
-				h->onResolved((Handle::ElpeError)status, addr);
+				h->onResolved((Handle::mmerrno)status, addr);
 				uv_freeaddrinfo(res);
 			}
 			resolver->data = NULL;

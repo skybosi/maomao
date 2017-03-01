@@ -12,10 +12,10 @@ udpServer::~udpServer()
 
 }
 
-void udpServer::OnSent(ElpeError status)
+void udpServer::OnSent(mmerrno status)
 {
-	if (status != ElpeError::elpeSuccess) {
-		fprintf(stderr, "Send error %s\n", Handle::errDesc(status));
+	if (status != mmerrno::mmSuccess) {
+		fprintf(stderr, "Send error %s\n", Handle::errCode(status));
 		return;
 	}
 }

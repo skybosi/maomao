@@ -5,7 +5,7 @@
 void tcpClient::OnRead(ssize_t nread, const char *buf)
 {
 	if (nread < 0) {
-		fprintf(stderr, "Read error %s\n",  Handle::errName(nread));
+		fprintf(stderr, "Read error %s\n",  Handle::errType(nread));
 		close();
 		return;
 	}
@@ -18,10 +18,10 @@ void tcpClient::OnRead(ssize_t nread, const char *buf)
 	write(sendbuf,strlen(sendbuf)+1);
 }
 
-void tcpClient::OnConnected(ElpeError status)
+void tcpClient::OnConnected(mmerrno status)
 {
-	if (status != ElpeError::elpeSuccess) {
-		fprintf(stderr, "on_connect error %s\n", Handle::errDesc(status));
+	if (status != mmerrno::mmSuccess) {
+		fprintf(stderr, "on_connect error %s\n", Handle::errCode(status));
 		return;
 	}
 	read_start();

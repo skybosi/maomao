@@ -1,9 +1,9 @@
 #include "tcpServer.h"
 
-void tcpServer::doAccept(Handle::ElpeError status)
+void tcpServer::doAccept(Handle::mmerrno status)
 {
-	if (status != ElpeError::elpeSuccess) {
-		fprintf(stderr, "New connection error %s\n", Handle::errDesc(status));
+	if (status != mmerrno::mmSuccess) {
+		fprintf(stderr, "New connection error %s\n", Handle::errCode(status));
 		return;
 	}
 

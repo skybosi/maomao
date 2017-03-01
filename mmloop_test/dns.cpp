@@ -7,11 +7,11 @@ class MyDNS : public DNS
 public:
 	MyDNS() {}
 	~MyDNS() {}
-	virtual void onResolved(Handle::ElpeError status,const char* ip)
+	virtual void onResolved(Handle::mmerrno status,const char* ip)
 	{
 		if (status != 0) 
 		{
-			fprintf(stderr, "getAddrInfo error %s\n", Handle::errDesc(status));
+			fprintf(stderr, "getAddrInfo error %s\n", Handle::errCode(status));
 			return;
 		}
 		printf("ip:%s\n",ip);

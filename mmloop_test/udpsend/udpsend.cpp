@@ -18,10 +18,10 @@ int udpsend::NativeSend4(const char *buf, size_t length)
 	return send4(buf,length,_destIp,_destPort);
 }
 
-void udpsend::OnSent(ElpeError status)
+void udpsend::OnSent(mmerrno status)
 {
-	if (status != ElpeError::elpeSuccess) {
-		fprintf(stderr, "Send error %s\n",Handle::errDesc(status));
+	if (status != mmerrno::mmSuccess) {
+		fprintf(stderr, "Send error %s\n",Handle::errCode(status));
 		FileHandle* file = static_cast<FileHandle *>(this->data);
 		file->close();
 		return;

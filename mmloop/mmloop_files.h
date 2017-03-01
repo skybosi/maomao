@@ -70,7 +70,7 @@ public:
 
 protected:
 	//@param events  - combination of flags of Event
-	virtual void OnFileEvent(const char *filename, uint events, ElpeError status) {}
+	virtual void OnFileEvent(const char *filename, uint events, mmerrno status) {}
 
 private:
 	static void _cbFSevent(uv_fs_event_t *handle, const char *filename, int events, int status);
@@ -156,7 +156,7 @@ public:
 
 protected:
 	//TODO: why wiped uv_connect_t here??
-	virtual void OnConnected(ElpeError status) {}
+	virtual void OnConnected(mmerrno status) {}
 
 private:
 	static void _cbConnected(uv_connect_t *req, int status);

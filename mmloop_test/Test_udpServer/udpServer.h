@@ -11,7 +11,7 @@ public:
 	udpServer();
 	~udpServer();
 
-	virtual void OnSent(ElpeError status);
+	virtual void OnSent(mmerrno status);
 	virtual void OnReceived(ssize_t nread, const char *buf, const struct sockaddr *addr, unsigned flags);
 
 };

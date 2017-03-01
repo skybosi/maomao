@@ -36,7 +36,7 @@ namespace mm {
 
 			FileEvent* self = static_cast<FileEvent *>(handle->data);
 			if (self != NULL) {
-				self->OnFileEvent(filename, (uint)events, (ElpeError)status);
+				self->OnFileEvent(filename, (uint)events, (mmerrno)status);
 			}
 		}
 
@@ -226,7 +226,7 @@ namespace mm {
 
 			if (self != NULL) {
 				//TODO: why wiped uv_connect_t here??
-				self->OnConnected((ElpeError)status);
+				self->OnConnected((mmerrno)status);
 			}
 
 			delete req;

@@ -37,13 +37,13 @@ class MM_LOOP_API DNS;
 
 		protected:
 			// called when the stream is shutdown
-			virtual void OnShutdown(ElpeError status) {}
+			virtual void OnShutdown(mmerrno status) {}
 
 			// tiggered when a new incomming connection is detected by listen()
-			virtual void doAccept(ElpeError status) {}
+			virtual void doAccept(mmerrno status) {}
 
 			// called after buffer has been written into the stream
-			virtual void OnWrote(ElpeError status) {}
+			virtual void OnWrote(mmerrno status) {}
 			// called after buffer has been read from the stream
 			virtual void OnRead(ssize_t nread, const char *buf) {} // TODO: uv_buf_t is unacceptable to appear here, must take a new manner known in this C++ wrapper level
 
@@ -87,7 +87,7 @@ class MM_LOOP_API DNS;
 
 		protected:
 			// TODO: must enumerate all the status in the class
-			virtual void OnConnected(ElpeError status) {}
+			virtual void OnConnected(mmerrno status) {}
 
 		private:
 			int connect(const struct sockaddr *addr);
@@ -142,7 +142,7 @@ class MM_LOOP_API DNS;
 
 		protected:
 			// 
-			virtual void OnSent(ElpeError status) {}
+			virtual void OnSent(mmerrno status) {}
 			//	virtual void OnAllocate(UDP *self, size_t suggested_size, uv_buf_t *buf) {}
 			virtual void OnReceived(ssize_t nread, const char *buf, const struct sockaddr *addr, unsigned flags) {}
 
@@ -165,7 +165,7 @@ class MM_LOOP_API DNS;
 			int getAddrInfo(Loop &loop, const char* node, const char* service, const struct addrinfo* hints);
 
 		protected:
-			virtual void onResolved(Handle::ElpeError status, const char* ip) {}
+			virtual void onResolved(Handle::mmerrno status, const char* ip) {}
 
 		private:
 			static void _cbResolved(uv_getaddrinfo_t *resolver, int status, struct addrinfo *res);

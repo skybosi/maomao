@@ -11,7 +11,7 @@ public:
 	tcpServer(){}
 	~tcpServer(){}
 
-	virtual void doAccept(ElpeError status);
+	virtual void doAccept(mmerrno status);
 
 	virtual void OnRead(ssize_t nread, const char *buf);
 

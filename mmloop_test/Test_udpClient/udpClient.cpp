@@ -12,10 +12,10 @@ udpClient::~udpClient()
 
 }
 
-void udpClient::OnSent(ElpeError status)
+void udpClient::OnSent(mmerrno status)
 {
-	if (status != ElpeError::elpeSuccess) {
-		fprintf(stderr, "Send error %s\n",Handle::errDesc(status));
+	if (status != mmerrno::mmSuccess) {
+		fprintf(stderr, "Send error %s\n",Handle::errCode(status));
 		return;
 	}
 }

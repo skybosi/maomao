@@ -10,10 +10,10 @@ public:
 	pipeServer(){}
 	~pipeServer(){}
 
-	virtual void doAccept(ElpeError status)
+	virtual void doAccept(mmerrno status)
 	{
-		if (status != ElpeError::elpeSuccess) {
-			fprintf(stderr, "New connection error %s\n", errName(status));
+		if (status != mmerrno::mmSuccess) {
+			fprintf(stderr, "New connection error %s\n", errType(status));
 			return;
 		}
 
@@ -50,14 +50,14 @@ int pipeServerTest()
 	r = server.bind(TEST_PIPENAME);
 	if (r != 0)
 	{
-		fprintf(stderr, "Bind error %s\n", pipeServer::errName(r));
+		fprintf(stderr, "Bind error %s\n", pipeServer::errType(r));
 		return 1;
 	}
 
 	r = server.listen();
 	if (r != 0)
 	{
-		fprintf(stderr, "Listen error %s\n", pipeServer::errName(r));
+		fprintf(stderr, "Listen error %s\n", pipeServer::errType(r));
 		return 1;
 	}
 

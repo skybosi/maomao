@@ -10,9 +10,9 @@ public:
 	MyFileEvent() {}
 	~MyFileEvent() {}
 
-	virtual void OnFileEvent(const char *filename, _Event events, ElpeError status)
+	virtual void OnFileEvent(const char *filename, _Event events, mmerrno status)
 	{
-		if (status != Handle::elpeSuccess)
+		if (status != Handle::mmSuccess)
 		{
 			printf("File detect errors!\n");
 			return;

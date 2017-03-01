@@ -12,10 +12,10 @@ public:
 	~pipeClient(){}
 
 
-	virtual void OnConnected(ElpeError status)
+	virtual void OnConnected(mmerrno status)
 	{
-		if (status != ElpeError::elpeSuccess) {
-			fprintf(stderr, "on_connect error %s\n", errName(status));
+		if (status != mmerrno::mmSuccess) {
+			fprintf(stderr, "on_connect error %s\n", errType(status));
 			return;
 		}
 		read_start();

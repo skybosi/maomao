@@ -23,126 +23,129 @@ namespace Loop {
 	public:
 		typedef uv_os_fd_t fd_t;
 
-		typedef enum _ElpeError
+		typedef enum _mmerrno
 		{
-			elpeSuccess = 0,
-			elpeNotPermitted = EPERM,	   // operation not permitted
-			elpeNoFile = ENOENT,		   //no such file or directory
-			elpeNoProcess = ESRCH,		   //no such process
-			elpeIntr = EINTR,			   //interrupted system call
-			elpeIO = EIO,				   //i/o error
-			elpeNotDevOrAddress = ENXIO,			//no such device or address
-			elpeArgTooLong = E2BIG,			//argument list too long
-			elpeENOEXEC = ENOEXEC,
-			elpeBadFd = EBADF,				//bad file descriptor
-			elpeECHILD = ECHILD,			//
-			elpeResUnavailable = EAGAIN,			//resource temporarily unavailable
-			elpeNotEnoughMemory = ENOMEM,			//not enough memory
-			elpePermissionDenied = EACCES,			//permission denied
-			elpeBadAddress = EFAULT,			//bad address in system call argument
-			elpeResBusy = EBUSY,				//resource busy or locked
-			elpeFileAlreadyExists = EEXIST,			//file already exists
-			elpeNotPermittedLink = EXDEV,				//cross-device link not permitted
-			elpeNotDevice = ENODEV,			//no such device
-			elpeNotDirectory = ENOTDIR,		//not a directory
-			elpeEISDIR = EISDIR,			//illegal operation on a directory
-			elpeENFILE = ENFILE,			//file table overflow
-			elpeTooMany = EMFILE,			//too many open files
-			elpeENOTTY = ENOTTY,
-			elpeFileTooLarge = EFBIG,				//file too large
-			elpeNoSpace = ENOSPC,			//no space left on device
-			elpeInvalidSeek = ESPIPE,			//invalid seek
-			elpeROFS = EROFS,				//read-only file system
-			elpeTooManyLinks = EMLINK,			//too many links
-			elpeBorkenPipe = EPIPE,				//broken pipe
-			elpeEDOM = EDOM,
-			elpeEDEADLK = EDEADLK,
-			elpeNameTooLong = ENAMETOOLONG, //name too long
-			elpeNOLCK = ENOLCK,
-			elpeFunNotImpl = ENOSYS,			//function not implemented
-			elpeDirNotEmpty = ENOTEMPTY,		//directory not empty
-			elpe__EOF = UV__EOF,
-			elpe__UNKNOWN = UV__UNKNOWN,
-			elpe__EAI_ADDRFAMILY = UV__EAI_ADDRFAMILY,
-			elpe__EAI_AGAIN = UV__EAI_AGAIN,
-			elpe__EAI_BADFLAGS = UV__EAI_BADFLAGS,
-			elpe__EAI_CANCELED = UV__EAI_CANCELED,
-			elpe__EAI_FAIL = UV__EAI_FAIL,
-			elpe__EAI_FAMILY = UV__EAI_FAMILY,
-			elpe__EAI_MEMORY = UV__EAI_MEMORY,
-			elpe__EAI_NODATA = UV__EAI_NODATA,
-			elpe__EAI_NONAME = UV__EAI_NONAME,
-			elpe__EAI_OVERFLOW = UV__EAI_OVERFLOW,
-			elpe__EAI_SERVICE = UV__EAI_SERVICE,
-			elpe__EAI_SOCKTYPE = UV__EAI_SOCKTYPE,
-			elpe__EAI_BADHINTS = UV__EAI_BADHINTS,
-			elpe__EAI_PROTOCOL = UV__EAI_PROTOCOL,
-			elpe__E2BIG = UV__E2BIG,
-			elpe__EACCES = UV__EACCES,
-			elpe__EADDRINUSE = UV__EADDRINUSE,
-			elpe__EADDRNOTAVAIL = UV__EADDRNOTAVAIL,
-			elpe__EAFNOSUPPORT = UV__EAFNOSUPPORT,
-			elpe__EAGAIN = UV__EAGAIN,
-			elpe__EALREADY = UV__EALREADY,
-			elpe__EBADF = UV__EBADF,
-			elpe__EBUSY = UV__EBUSY,
-			elpe__ECANCELED = UV__ECANCELED,
-			elpe__ECHARSET = UV__ECHARSET,
-			elpe__ECONNABORTED = UV__ECONNABORTED,
-			elpe__ECONNREFUSED = UV__ECONNREFUSED,
-			elpe__ECONNRESET = UV__ECONNRESET,
-			elpe__EDESTADDRREQ = UV__EDESTADDRREQ,
-			elpe__EEXIST = UV__EEXIST,
-			elpe__EFAULT = UV__EFAULT,
-			elpe__EHOSTUNREACH = UV__EHOSTUNREACH,
-			elpe__EINTR = UV__EINTR,
-			elpe__EINVAL = UV__EINVAL,
-			elpe__EIO = UV__EIO,
-			elpe__EISCONN = UV__EISCONN,
-			elpe__EISDIR = UV__EISDIR,
-			elpe__ELOOP = UV__ELOOP,
-			elpe__EMFILE = UV__EMFILE,
-			elpe__EMSGSIZE = UV__EMSGSIZE,
-			elpe__ENAMETOOLONG = UV__ENAMETOOLONG,
-			elpe__ENETDOWN = UV__ENETDOWN,
-			elpe__ENETUNREACH = UV__ENETUNREACH,
-			elpe__ENFILE = UV__ENFILE,
-			elpe__ENOBUFS = UV__ENOBUFS,
-			elpe__ENODEV = UV__ENODEV,
-			elpe__ENOENT = UV__ENOENT,
-			elpe__ENOMEM = UV__ENOMEM,
-			elpe__ENONET = UV__ENONET,
-			elpe__ENOSPC = UV__ENOSPC,
-			elpe__ENOSYS = UV__ENOSYS,
-			elpe__ENOTCONN = UV__ENOTCONN,
-			elpe__ENOTDIR = UV__ENOTDIR,
-			elpe__ENOTEMPTY = UV__ENOTEMPTY,
-			elpe__ENOTSOCK = UV__ENOTSOCK,
-			elpe__ENOTSUP = UV__ENOTSUP,
-			elpe__EPERM = UV__EPERM,
-			elpe__EPIPE = UV__EPIPE,
-			elpe__EPROTO = UV__EPROTO,
-			elpe__EPROTONOSUPPORT = UV__EPROTONOSUPPORT,
-			elpe__EPROTOTYPE = UV__EPROTOTYPE,
-			elpe__EROFS = UV__EROFS,
-			elpe__ESHUTDOWN = UV__ESHUTDOWN,
-			elpe__ESPIPE = UV__ESPIPE,
-			elpe__ESRCH = UV__ESRCH,
-			elpe__ETIMEDOUT = UV__ETIMEDOUT,
-			elpe__ETXTBSY = UV__ETXTBSY,
-			elpe__EXDEV = UV__EXDEV,
-			elpe__EFBIG = UV__EFBIG,
-			elpe__ENOPROTOOPT = UV__ENOPROTOOPT,
-			elpe__ERANGE = UV__ERANGE,
-			elpe__ENXIO = UV__ENXIO,
-			elpe__EMLINK = UV__EMLINK,
-			elpe__EHOSTDOWN = UV__EHOSTDOWN,
-		} ElpeError;
+			//errno.h error number
+			mmSuccess           = 0,
+			mmNotPermitted      = EPERM,	        // operation not permitted
+			mmNoFile            = ENOENT,		    // no such file or directory
+			mmNoProcess         = ESRCH,		    // no such process
+			mmIntr              = EINTR,			// interrupted system call
+			mmIO                = EIO,				// i/o error
+			mmNotDevOrAddress   = ENXIO,		    // no such device or address
+			mmArgTooLong        = E2BIG,			// argument list too long
+			mmENOEXEC           = ENOEXEC,          // exec format error (POSIX.1)
+			mmBadFd             = EBADF,			// bad file descriptor
+			mmECHILD            = ECHILD,			// No child processes (POSIX.1)
+			mmResUnavailable    = EAGAIN,		    // resource temporarily unavailable
+			mmNotEnoughMemory   = ENOMEM,		    // not enough memory
+			mmPermissionDenied  = EACCES,	        // permission denied
+			mmBadAddress        = EFAULT,			// bad address in system call argument
+			mmResBusy           = EBUSY,			// resource busy or locked
+			mmFileAlreadyExists = EEXIST,	        // file already exists
+			mmNotPermittedLink  = EXDEV,		    // cross-device link not permitted
+			mmNotDevice         = ENODEV,			// no such device
+			mmNotDirectory      = ENOTDIR,		    // not a directory
+			mmEISDIR            = EISDIR,			// illegal operation on a directory
+			mmENFILE            = ENFILE,			// file table overflow
+			mmTooMany           = EMFILE,			// too many open files
+			mmENOTTY            = ENOTTY,           // Inappropriate I/O control operation (POSIX.1)
+			mmFileTooLarge      = EFBIG,			// file too large
+			mmNoSpace           = ENOSPC,			// no space left on device
+			mmInvalidSeek       = ESPIPE,			// invalid seek
+			mmROFS              = EROFS,			// read-only file system
+			mmTooManyLinks      = EMLINK,		    // too many links
+			mmBorkenPipe        = EPIPE,			// broken pipe
+			mmEDOM              = EDOM,             // Mathematics argument out of domain of function (POSIX.1, C99)
+			mmEDEADLK           = EDEADLK,          // Resource deadlock avoided (POSIX.1)
+			mmNameTooLong       = ENAMETOOLONG,     // name too long
+			mmNOLCK             = ENOLCK,           // No locks available (POSIX.1)
+			mmFunNotImpl        = ENOSYS,			// function not implemented
+			mmDirNotEmpty       = ENOTEMPTY,		// directory not empty
 
-		static const char* errDesc(ElpeError err) { return errDesc((int)err); }
-		static const char* errDesc(int err) { return uv_strerror(err); }
-		static const char* errName(ElpeError err) { return errName((int)err); }
-		static const char* errName(int errNum) { return uv_err_name(errNum); }
+			// uv error number
+			mm_EOF              = UV__EOF,
+			mm_UNKNOWN          = UV__UNKNOWN,
+			mm_EAI_ADDRFAMILY   = UV__EAI_ADDRFAMILY,
+			mm_EAI_AGAIN        = UV__EAI_AGAIN,
+			mm_EAI_BADFLAGS     = UV__EAI_BADFLAGS,
+			mm_EAI_CANCELED     = UV__EAI_CANCELED,
+			mm_EAI_FAIL         = UV__EAI_FAIL,
+			mm_EAI_FAMILY       = UV__EAI_FAMILY,
+			mm_EAI_MEMORY       = UV__EAI_MEMORY,
+			mm_EAI_NODATA       = UV__EAI_NODATA,
+			mm_EAI_NONAME       = UV__EAI_NONAME,
+			mm_EAI_OVERFLOW     = UV__EAI_OVERFLOW,
+			mm_EAI_SERVICE      = UV__EAI_SERVICE,
+			mm_EAI_SOCKTYPE     = UV__EAI_SOCKTYPE,
+			mm_EAI_BADHINTS     = UV__EAI_BADHINTS,
+			mm_EAI_PROTOCOL     = UV__EAI_PROTOCOL,
+			mm_E2BIG            = UV__E2BIG,
+			mm_EACCES           = UV__EACCES,
+			mm_EADDRINUSE       = UV__EADDRINUSE,
+			mm_EADDRNOTAVAIL    = UV__EADDRNOTAVAIL,
+			mm_EAFNOSUPPORT     = UV__EAFNOSUPPORT,
+			mm_EAGAIN           = UV__EAGAIN,
+			mm_EALREADY         = UV__EALREADY,
+			mm_EBADF            = UV__EBADF,
+			mm_EBUSY            = UV__EBUSY,
+			mm_ECANCELED        = UV__ECANCELED,
+			mm_ECHARSET         = UV__ECHARSET,
+			mm_ECONNABORTED     = UV__ECONNABORTED,
+			mm_ECONNREFUSED     = UV__ECONNREFUSED,
+			mm_ECONNRESET       = UV__ECONNRESET,
+			mm_EDESTADDRREQ     = UV__EDESTADDRREQ,
+			mm_EEXIST           = UV__EEXIST,
+			mm_EFAULT           = UV__EFAULT,
+			mm_EHOSTUNREACH     = UV__EHOSTUNREACH,
+			mm_EINTR            = UV__EINTR,
+			mm_EINVAL           = UV__EINVAL,
+			mm_EIO              = UV__EIO,
+			mm_EISCONN          = UV__EISCONN,
+			mm_EISDIR           = UV__EISDIR,
+			mm_ELOOP            = UV__ELOOP,
+			mm_EMFILE           = UV__EMFILE,
+			mm_EMSGSIZE         = UV__EMSGSIZE,
+			mm_ENAMETOOLONG     = UV__ENAMETOOLONG,
+			mm_ENETDOWN         = UV__ENETDOWN,
+			mm_ENETUNREACH      = UV__ENETUNREACH,
+			mm_ENFILE           = UV__ENFILE,
+			mm_ENOBUFS          = UV__ENOBUFS,
+			mm_ENODEV           = UV__ENODEV,
+			mm_ENOENT           = UV__ENOENT,
+			mm_ENOMEM           = UV__ENOMEM,
+			mm_ENONET           = UV__ENONET,
+			mm_ENOSPC           = UV__ENOSPC,
+			mm_ENOSYS           = UV__ENOSYS,
+			mm_ENOTCONN         = UV__ENOTCONN,
+			mm_ENOTDIR          = UV__ENOTDIR,
+			mm_ENOTEMPTY        = UV__ENOTEMPTY,
+			mm_ENOTSOCK         = UV__ENOTSOCK,
+			mm_ENOTSUP          = UV__ENOTSUP,
+			mm_EPERM            = UV__EPERM,
+			mm_EPIPE            = UV__EPIPE,
+			mm_EPROTO           = UV__EPROTO,
+			mm_EPROTONOSUPPORT  = UV__EPROTONOSUPPORT,
+			mm_EPROTOTYPE       = UV__EPROTOTYPE,
+			mm_EROFS            = UV__EROFS,
+			mm_ESHUTDOWN        = UV__ESHUTDOWN,
+			mm_ESPIPE           = UV__ESPIPE,
+			mm_ESRCH            = UV__ESRCH,
+			mm_ETIMEDOUT        = UV__ETIMEDOUT,
+			mm_ETXTBSY          = UV__ETXTBSY,
+			mm_EXDEV            = UV__EXDEV,
+			mm_EFBIG            = UV__EFBIG,
+			mm_ENOPROTOOPT      = UV__ENOPROTOOPT,
+			mm_ERANGE           = UV__ERANGE,
+			mm_ENXIO            = UV__ENXIO,
+			mm_EMLINK           = UV__EMLINK,
+			mm_EHOSTDOWN        = UV__EHOSTDOWN,
+		} mmerrno;
+
+		static const char* errCode(mmerrno err) { return errCode((int)err); }
+		static const char* errCode(int err) { return uv_strerror(err); }
+		static const char* errType(mmerrno err) { return errType((int)err); }
+		static const char* errType(int err) { return uv_err_name(err); }
 
 	protected:
 		Handle();
