@@ -1,7 +1,5 @@
 #include "tcpServer.h"
 
-
-
 void tcpServer::doAccept(Handle::ElpeError status)
 {
 	if (status != ElpeError::elpeSuccess) {
@@ -18,10 +16,8 @@ void tcpServer::doAccept(Handle::ElpeError status)
 		int  port = 0;
 		client->getpeerIpPort(ip,port);
 		printf("client accept client ip = %s,port = %d\n",ip,port);
-
 		client->read_start();
-	}
-	else {
+	}else {
 		client->close();
 		delete client;
 	}
@@ -31,6 +27,5 @@ void tcpServer::doAccept(Handle::ElpeError status)
 void tcpServer::OnRead(ssize_t nread, const char *buf)
 {
 	printf("recv data:%s,len = %d\n", buf,nread);
-
 	write(buf,nread);
 }

@@ -57,32 +57,17 @@
     <ClCompile Include="pipeServer.cpp">
       <Filter>Source Files\pipeTest</Filter>
     </ClCompile>
-    <ClCompile Include="Test_udpClient\main.cpp">
-      <Filter>Source Files\udpTest\udpClient</Filter>
-    </ClCompile>
     <ClCompile Include="Test_udpClient\udpClient.cpp">
       <Filter>Source Files\udpTest\udpClient</Filter>
-    </ClCompile>
-    <ClCompile Include="Test_tcpClient\main.cpp">
-      <Filter>Source Files\tcpTest\tcpClient</Filter>
     </ClCompile>
     <ClCompile Include="Test_tcpClient\tcpClient.cpp">
       <Filter>Source Files\tcpTest\tcpClient</Filter>
     </ClCompile>
-    <ClCompile Include="Test_TcpServer\main.cpp">
-      <Filter>Source Files\tcpTest\tcpServer</Filter>
-    </ClCompile>
     <ClCompile Include="Test_TcpServer\tcpServer.cpp">
       <Filter>Source Files\tcpTest\tcpServer</Filter>
     </ClCompile>
-    <ClCompile Include="Test_udpServer\main.cpp">
-      <Filter>Source Files\udpTest\udpServer</Filter>
-    </ClCompile>
     <ClCompile Include="Test_udpServer\udpServer.cpp">
       <Filter>Source Files\udpTest\udpServer</Filter>
-    </ClCompile>
-    <ClCompile Include="udpsend\main.cpp">
-      <Filter>Source Files\udpsendTest</Filter>
     </ClCompile>
     <ClCompile Include="udpsend\udpsend.cpp">
       <Filter>Source Files\udpsendTest</Filter>
@@ -95,6 +80,21 @@
     </ClCompile>
     <ClCompile Include="timer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_udpClient\udpClientTest.cpp">
+      <Filter>Source Files\udpTest\udpClient</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_udpServer\udpServerTest.cpp">
+      <Filter>Source Files\udpTest\udpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="udpsend\udpsendTest.cpp">
+      <Filter>Source Files\udpsendTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_TcpServer\tcpServerTest.cpp">
+      <Filter>Source Files\tcpTest\tcpServer</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_tcpClient\tcpClientTest.cpp">
+      <Filter>Source Files\tcpTest\tcpClient</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

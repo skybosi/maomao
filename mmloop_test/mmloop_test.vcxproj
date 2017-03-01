@@ -130,16 +130,16 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pipeClient.cpp" />
     <ClCompile Include="pipeServer.cpp" />
-    <ClCompile Include="Test_tcpClient\main.cpp" />
+    <ClCompile Include="Test_tcpClient\tcpClientTest.cpp" />
     <ClCompile Include="Test_tcpClient\tcpClient.cpp" />
-    <ClCompile Include="Test_TcpServer\main.cpp" />
+    <ClCompile Include="Test_TcpServer\tcpServerTest.cpp" />
     <ClCompile Include="Test_TcpServer\tcpServer.cpp" />
-    <ClCompile Include="Test_udpClient\main.cpp" />
+    <ClCompile Include="Test_udpClient\udpClientTest.cpp" />
     <ClCompile Include="Test_udpClient\udpClient.cpp" />
-    <ClCompile Include="Test_udpServer\main.cpp" />
+    <ClCompile Include="Test_udpServer\udpServerTest.cpp" />
     <ClCompile Include="Test_udpServer\udpServer.cpp" />
     <ClCompile Include="timer.cpp" />
-    <ClCompile Include="udpsend\main.cpp" />
+    <ClCompile Include="udpsend\udpsendTest.cpp" />
     <ClCompile Include="udpsend\udpsend.cpp" />
   </ItemGroup>
   <ItemGroup>

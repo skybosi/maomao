@@ -11,6 +11,13 @@ extern int asyncTest();
 extern int dnsTest();
 extern int filesTest();
 extern int timerTest();
+extern int pipeClientTest();
+extern int pipeServerTest();
+extern int tcpClientTest();
+extern int tcpServerTest();
+extern int udpClientTest();
+extern int udpServerTest();
+extern int udpsendTest(int argc, char* argv[]);
 
 using namespace mm::Loop;
 
@@ -48,7 +55,10 @@ int main(int argc,char* argv[])
 	printf("--------------- mmloop-Test ---------------\n");
 	char* str = "first";
 	int i = 1;
-	while (argc > 1) {
+	//when LONELY is true,it can be test with othre LONELY true Unit test
+	//LONELY is false,just run it alone
+	bool LONELY = true;
+	while (LONELY && argc > 1) {
 		str = argv[i++];
 		std::cout << "---------------" << str << "---------------" << std::endl;
 		switch (hash_(str)) {			
@@ -63,6 +73,34 @@ int main(int argc,char* argv[])
 			break;
 		case "timer"_hash:
 			timerTest();
+			break;
+		case "udpC"_hash:
+			LONELY = false;
+			udpClientTest();
+			break;
+		case "udpS"_hash:
+			LONELY = false;
+			udpServerTest();
+			break;
+		case "tcpC"_hash:
+			LONELY = false;
+			tcpClientTest();
+			break;
+		case "tcpS"_hash:
+			LONELY = false;
+			tcpServerTest();
+			break;
+		case "pipeC"_hash:
+			LONELY = false;
+			pipeClientTest();
+			break;
+		case "pipeS"_hash:
+			LONELY = false;
+			pipeServerTest();
+			break;
+		case "udpSend"_hash:
+			LONELY = false;
+			udpsendTest(argc,argv);
 			break;
 		default:
 			break;

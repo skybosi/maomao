@@ -40,8 +40,7 @@ public:
 
 # define TEST_PIPENAME "\\\\?\\pipe\\uv-test"
 
-/*
-int main()
+int pipeServerTest()
 {
 	Loop loop(true);
 	pipeServer server;
@@ -64,9 +63,5 @@ int main()
 	}
 
 	loop.run(Loop::Default);
-
-
-
 	return 0;
 }
-*/
