@@ -41,7 +41,7 @@ Makefile.in
 *.target.mk
 
 /out/
-/build/gyp
+#/build/gyp
 
 /test/.libs/
 /test/run-tests
@@ -51,14 +51,14 @@ Makefile.in
 /test/run-benchmarks.exe
 /test/run-benchmarks.dSYM
 
-*.sln
+#*.sln
 *.sln.cache
 *.ncb
-*.vcproj
-*.vcproj*.user
-*.vcxproj
-*.vcxproj.filters
-*.vcxproj.user
+#*.vcproj
+#*.vcproj*.user
+#*.vcxproj
+#*.vcxproj.filters
+#*.vcxproj.user
 _UpgradeReport_Files/
 UpgradeLog*.XML
 Debug
