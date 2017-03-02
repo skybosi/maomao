@@ -166,8 +166,17 @@ namespace mm {
 		int TCP::connected_open(sock_t sock)
 		{
 			uv_tcp_t* tcp = (uv_tcp_t *)context_ptr();
-			//return uv_tcp_connected_open(tcp,sock);//version 1.9.1
 			return uv_tcp_open(tcp, sock);
+			//return uv_tcp_connected_open(tcp,sock);//version 1.9.1
+			/*
+			int r = uv_tcp_open(tcp, sock);
+			if (r != 0)
+			        return r;
+			uv_connection_init((uv_stream_t*)tcp);
+			// AcceptEx() implicitly binds the accepted socket.
+			tcp->flags |= UV_HANDLE_BOUND | UV_HANDLE_READABLE | UV_HANDLE_WRITABLE;
+			return 0;
+			*/
 		}
 
 		int TCP::nodelay(int enable) {

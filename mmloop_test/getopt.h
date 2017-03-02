@@ -1,5 +1,5 @@
-#ifndef __ZQ_GETOPT_H__
-#define __ZQ_GETOPT_H__
+#ifndef __MM_GETOPT_H__
+#define __MM_GETOPT_H__
 
 /** Callers store zero here to inhibit the error message `getopt' prints
 for unrecognized options.  */
@@ -89,4 +89,4 @@ int getopt (int argc,char *const *argv,const char *optstring);
 
 int getopt_long (int argc,char *const *argv,const char *options,const struct option *long_options,int *opt_index);
 
-#endif //__ZQ_GETOPT_H__
+#endif //__MM_GETOPT_H__
