@@ -96,6 +96,9 @@
     <ClCompile Include="Test_pipe\pipeServer.cpp">
       <Filter>Source Files\pipeTest</Filter>
     </ClCompile>
+    <ClCompile Include="utilsTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Test_udpClient\udpClient.h">

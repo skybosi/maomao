@@ -1,4 +1,5 @@
 #include "mmloop_files.h"
+#include "mmloop_utils.h"
 //#include <fcntl.h>
 
 
@@ -47,6 +48,7 @@ public:
 	virtual void OnClose(int result)
 	{
 		printf("OnClose!\n");
+		this->clean();
 	}
 
 	virtual void OnRead(char* data,int len)
@@ -88,6 +90,5 @@ int filesTest()
 
 	loop.run(Loop::Default);
 	delete file;
-	getchar();
 	return 0;
 }

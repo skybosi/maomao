@@ -29,6 +29,21 @@ namespace Loop {
 			l->OnWalk(static_cast<Handle *>(uvhandle->data), arg);
 	}
 
+	int Loop::config(uv_loop_option option, ...)
+	{
+		va_list ap;
+		int err;
+		va_start(ap, option);
+		err = uv_loop_configure(_uvLoop,option,ap);
+		va_end(ap);
+		return err;
+	}
+
+	uv_loop_t* Loop::default_loop()
+	{
+		return uv_default_loop();
+
+	}
 
 	bool Loop::run(RunMode mode)
 	{
@@ -46,12 +61,17 @@ namespace Loop {
 		{
 			return uv_loop_close(_uvLoop);
 		}
-		return -1;
+		return UV_EBUSY;
 	}
 
 	int Loop::alive()
 	{
 		return uv_loop_alive(_uvLoop);
+	}
+	
+	size_t Loop::loop_size() 
+	{
+		return uv_loop_size();
 	}
 
 	int Loop::backend_fd()
@@ -117,7 +137,7 @@ namespace Loop {
 		Handle *h = static_cast<Handle *>(uvhandle->data);
 		if (NULL != h)
 		{
-			h->_deleteContext();
+			h->deleteContext();
 			h->OnClose();
 		}
 	}
@@ -161,7 +181,7 @@ namespace Loop {
 		uv_close(&context->handle, _cbClose);
 	}
 
-	void Handle::_deleteContext()
+	void Handle::deleteContext()
 	{
 		if (context != NULL)
 		{
@@ -194,7 +214,7 @@ namespace Loop {
 		return uv_fileno(&context->handle, fd);
 	}
 
-	Loop& Handle::get_loop()
+	Loop& Handle::loop()
 	{
 		return *_loop;
 	}
@@ -265,53 +285,7 @@ namespace Loop {
 		return uv_idle_stop(handle);
 	}
 
-	// -----------------------------
-	// class Timer
-	// -----------------------------
-
-	Timer::Timer()
-	{
-	}
-
-	void Timer::_cbOnTimer(uv_timer_t *timer)
-	{
-		Timer *h = static_cast<Timer *>(timer->data);
-		if (NULL != h)
-			h->OnTimer();
-	}
-
-	int Timer::init(Loop &loop) {
-		this->Handle::init(loop);
-		uv_timer_t * timer = (uv_timer_t *)context_ptr();
-		return uv_timer_init(loop.context_ptr(), timer);
-	}
-
-	int Timer::start(uint64_t timeout, uint64_t repeat) {
-		uv_timer_t* timer = (uv_timer_t *)context_ptr();
-		return uv_timer_start(timer, _cbOnTimer, timeout, repeat);
-	}
-
-	int Timer::stop() {
-		uv_timer_t* timer = (uv_timer_t *)context_ptr();
-		return uv_timer_stop(timer);
-	}
-
-	int Timer::again() {
-		uv_timer_t* timer = (uv_timer_t *)context_ptr();
-		return uv_timer_again(timer);
-	}
-
-	void Timer::set_repeat(uint64_t repeat) {
-		uv_timer_t* timer = (uv_timer_t *)context_ptr();
-		uv_timer_set_repeat(timer, repeat);
-	}
-
-	uint64_t Timer::get_repeat() {
-		uv_timer_t* timer = (uv_timer_t *)context_ptr();
-		return uv_timer_get_repeat(timer);
-	}
-
-
+	
 	// -----------------------------
 	// class Async
 	// -----------------------------
@@ -348,11 +322,27 @@ namespace Loop {
 		return uv_signal_init(loop.context_ptr(), signal);
 	}
 
+#if UV_VERSION_HEX >= ( (1<<16) | (12<<8) | (0) ) //version 1.12.0
+	int Signal::start(int signum ,SiGSHOTMODE sigmode/*= DEFAULT*/) {
+		uv_signal_t* signal = (uv_signal_t *)context_ptr();
+		switch (sigmode)
+		{
+		case mm::Loop::Signal::DEFAULT:
+			return uv_signal_start(signal, _cbSignal, signum);
+			break;
+		case mm::Loop::Signal::ONESHOT:
+			return uv_signal_start_oneshot(signal, _cbSignal, signum);
+			break;
+		default:
+			break;
+		}		
+	}
+#else
 	int Signal::start(int signum) {
 		uv_signal_t* signal = (uv_signal_t *)context_ptr();
-
 		return uv_signal_start(signal, _cbSignal, signum);
 	}
+#endif
 
 	int Signal::stop() {
 		uv_signal_t* signal = (uv_signal_t *)context_ptr();
@@ -367,18 +357,6 @@ namespace Loop {
 		}
 	}
 
-	CpuInfo::CpuInfo()
-	{
-		uv_cpu_info(&_info, &_count);
-	}
-	CpuInfo::~CpuInfo()
-	{
-		uv_free_cpu_info(_info, _count);
-	}
-	int CpuInfo::getCpuCount()
-	{
-		return _count;
-	}
 	}//namespace Loop
 
 }//namespace mm

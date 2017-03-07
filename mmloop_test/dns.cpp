@@ -15,7 +15,6 @@ public:
 			return;
 		}
 		printf("ip:%s\n",ip);
-		
 	}
 };
 
@@ -34,7 +33,5 @@ int dnsTest()
 	dns.getAddrInfo(loop,"reqres.in", "80",&hints);
 
 	loop.run(Loop::Default);
-
-	getchar();
 	return 0;
 }

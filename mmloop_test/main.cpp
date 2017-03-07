@@ -19,6 +19,8 @@ extern int tcpServerTest();
 extern int udpClientTest();
 extern int udpServerTest();
 extern int udpsendTest(int argc, char* argv[]);
+extern int bufferTest();
+extern int rusageTest();
 
 using namespace mm::Loop;
 
@@ -105,6 +107,12 @@ int main(int argc,char* argv[])
 		case "udpSend"_hash:
 			LONELY = false;
 			udpsendTest(argc,argv);
+			break;
+		case "buffer"_hash:
+			bufferTest();
+			break;
+		case "rusage"_hash:
+			rusageTest();
 			break;
 		default:
 			std::cout << str << ": invalid option! You can chose: async, dns, idle, files, timer, pipeC, pipeS, tcpC, tcpS, udpC, udpS, udpsend.  \nNOTE: some C/S mode must match" << std::endl;

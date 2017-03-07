@@ -8,7 +8,7 @@ void tcpServer::doAccept(Handle::mmerrno status)
 	}
 
 	tcpServer* client = new tcpServer();
-	client->init(get_loop());
+	client->init(loop());
 
 	if (accept((Stream*)client) == 0) {
 

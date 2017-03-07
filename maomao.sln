@@ -20,6 +20,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mmloop_test", "mmloop_test\
 		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5} = {C07F4C8B-E01F-41D5-BD53-9E58833C08F5}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "run-tests", "libuv\run-tests.vcxproj", "{FEE80AB5-40E5-7518-F554-DA72B89E03AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -68,6 +70,12 @@ Global
 		{F4F7C707-BE7E-4F11-950D-F100CAAD0BCC}.Release|x64.Build.0 = Release|x64
 		{F4F7C707-BE7E-4F11-950D-F100CAAD0BCC}.Release|x86.ActiveCfg = Release|Win32
 		{F4F7C707-BE7E-4F11-950D-F100CAAD0BCC}.Release|x86.Build.0 = Release|Win32
+		{FEE80AB5-40E5-7518-F554-DA72B89E03AE}.Debug|x64.ActiveCfg = Debug|Win32
+		{FEE80AB5-40E5-7518-F554-DA72B89E03AE}.Debug|x86.ActiveCfg = Debug|Win32
+		{FEE80AB5-40E5-7518-F554-DA72B89E03AE}.Debug|x86.Build.0 = Debug|Win32
+		{FEE80AB5-40E5-7518-F554-DA72B89E03AE}.Release|x64.ActiveCfg = Release|Win32
+		{FEE80AB5-40E5-7518-F554-DA72B89E03AE}.Release|x86.ActiveCfg = Release|Win32
+		{FEE80AB5-40E5-7518-F554-DA72B89E03AE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

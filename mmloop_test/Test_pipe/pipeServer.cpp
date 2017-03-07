@@ -18,7 +18,7 @@ public:
 		}
 
 		pipeServer *client = new pipeServer();
-		client->init(get_loop());
+		client->init(loop());
 
 		if (accept((Stream *)client) == 0) {
 

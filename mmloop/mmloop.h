@@ -2,6 +2,7 @@
 #ifndef _MMLOOP_H_
 #define _MMLOOP_H_
 
+#include <stdarg.h>
 #include "platform.h"
 #include "uv.h"
 
@@ -167,8 +168,8 @@ namespace Loop {
 		int send_buffer_size(int *value);
 		int recv_buffer_size(int *value);
 		int fileno(fd_t* fd);
-		void _deleteContext();
-		Loop& get_loop();
+		void deleteContext();
+		Loop& loop();
 
 	protected:
 		virtual void OnClose() {}
@@ -197,11 +198,13 @@ namespace Loop {
 
 		explicit Loop(bool defaultLoop = true);
 		virtual ~Loop();
-
+		int config(uv_loop_option option = UV_LOOP_BLOCK_SIGNAL,...);
+		static uv_loop_t* default_loop();
 		bool run(RunMode mode);
 		void stop();
 		int close();
 		int alive();
+		size_t loop_size();
 		int backend_fd();
 		int backend_timeout();
 
@@ -260,27 +263,6 @@ namespace Loop {
 	};
 
 	// -----------------------------
-	// class Timer
-	// -----------------------------
-	class Timer : public Handle
-	{
-	public:
-		Timer();
-		int init(Loop &loop);
-		int start(uint64_t timeout, uint64_t repeat);
-		int stop();
-		int again();
-		void set_repeat(uint64_t repeat);
-		uint64_t get_repeat();
-
-	protected:
-		virtual void OnTimer() {}
-
-	private:
-		static void _cbOnTimer(uv_timer_t *timer);
-	};
-
-	// -----------------------------
 	// class Async
 	// -----------------------------
 	class Async : public Handle
@@ -305,7 +287,18 @@ namespace Loop {
 	public:
 		Signal();
 		int init(Loop &loop);
+
+#if UV_VERSION_HEX >= ( (1<<16) | (12<<8) | (0) ) //version 1.12.0
+		enum SiGSHOTMODE
+		{
+			DEFAULT = 0,
+			ONESHOT
+		};
+		int start(int signum, SiGSHOTMODE sigmode = DEFAULT);
+#else
 		int start(int signum);
+#endif
+		
 		int stop();
 
 	protected:
@@ -315,22 +308,6 @@ namespace Loop {
 		static void _cbSignal(uv_signal_t *signal, int signum);
 	};
 
-	// -----------------------------
-	// class CpuInfo
-	// -----------------------------
-	class CpuInfo
-	{
-	public:
-		CpuInfo();
-		~CpuInfo();
-		int getCpuCount();
-
-	private:
-		uv_cpu_info_t*	_info;
-		int				_count;
-	};
-
-	
 	}
 } // namespace mm::Loop
 

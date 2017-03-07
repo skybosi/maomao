@@ -167,6 +167,7 @@
   <ItemGroup>
     <ClInclude Include="mmloop_lock.h" />
     <ClInclude Include="mmloop_MT.h" />
+    <ClInclude Include="mmloop_utils.h" />
     <ClInclude Include="platform.h" />
     <ClInclude Include="mmloop.h" />
     <ClInclude Include="mmloop_files.h" />
@@ -178,6 +179,7 @@
     <ClCompile Include="mmloop_lock.cpp" />
     <ClCompile Include="mmloop_MT.cpp" />
     <ClCompile Include="mmloop_net.cpp" />
+    <ClCompile Include="mmloop_utils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
