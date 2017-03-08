@@ -157,6 +157,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="async.cpp" />
+    <ClCompile Include="biterTest.cpp" />
     <ClCompile Include="utilsTest.cpp" />
     <ClCompile Include="dns.cpp" />
     <ClCompile Include="file.cpp" />

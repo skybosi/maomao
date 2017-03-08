@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <ctype.h>
 #include "mmloop.h"
 /*
 #include "async.cpp"
@@ -21,7 +22,7 @@ extern int udpServerTest();
 extern int udpsendTest(int argc, char* argv[]);
 extern int bufferTest();
 extern int rusageTest();
-
+extern int biterTest();
 using namespace mm::Loop;
 
 //for switch case use string
@@ -32,9 +33,10 @@ constexpr hash_t basis = 0xCBF29CE484222325ull;
 
 hash_t hash_(const char* str)
 {
+
 	hash_t ret{ basis };
 	while (*str) {
-		ret ^= *str;
+		ret ^= tolower(*str);
 		ret *= prime;
 		str++;
 	}
@@ -64,7 +66,7 @@ int main(int argc,char* argv[])
 	while (LONELY && argc > 1) {
 		str = argv[i++];
 		std::cout << "---------------" << str << "---------------" << std::endl;
-		switch (hash_(str)) {			
+		switch (hash_(str)) {
 		case "async"_hash:			
 			asyncTest();
 			break;
@@ -113,6 +115,9 @@ int main(int argc,char* argv[])
 			break;
 		case "rusage"_hash:
 			rusageTest();
+			break;
+		case "bit"_hash:
+			biterTest();
 			break;
 		default:
 			std::cout << str << ": invalid option! You can chose: async, dns, idle, files, timer, pipeC, pipeS, tcpC, tcpS, udpC, udpS, udpsend.  \nNOTE: some C/S mode must match" << std::endl;

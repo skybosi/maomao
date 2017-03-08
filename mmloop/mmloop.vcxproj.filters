@@ -36,6 +36,12 @@
     <ClInclude Include="mmloop_utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ProtoManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="biter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mmloop.cpp">
@@ -54,6 +60,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mmloop_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtoManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="biter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
