@@ -6,7 +6,7 @@
     <LocalDebuggerCommand>E:\git\vscode\maomao\maomao\mmloop_test\Release\Win32\mmloop_test.exe</LocalDebuggerCommand>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommand>E:\git\vscode\maomao\maomao\mmloop_test\Debug\Win32\mmloop_test.exe</LocalDebuggerCommand>
+    <LocalDebuggerCommand>F:\vscode\maomao\mmloop_test\Debug\Win32\mmloop_test.exe</LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerCommandArguments>bit</LocalDebuggerCommandArguments>
   </PropertyGroup>

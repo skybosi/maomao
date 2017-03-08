@@ -31,9 +31,13 @@ int biterTest()
 	std::cout << biter(bit2.get(0, 24));
 	std::cout << " ===== Test getbit ===== " << std::endl;
 	printf("%d %d %d\n", bit2.getbit(7), bit2.getbit(9),bit2.getbit(13));
-	std::cout << " ===== Test getbit ===== " << std::endl;
+	printf("%d %d %d\n", bit2.getbit(-5), bit2.getbit(-6), bit2.getbit(-7));
+	std::cout << " ===== Test setbit ===== " << std::endl;
+	bit2.setbit(-5, 0), bit2.setbit(-6, 1), bit2.setbit(-7, 0);
+	printf("%d %d %d\n", bit2.getbit(-5), bit2.getbit(-6), bit2.getbit(-7));
 	bit2.setbit(7, 1), bit2.setbit(9, 1), bit2.setbit(13, 0);
 	printf("%d %d %d\n", bit2.getbit(7), bit2.getbit(9), bit2.getbit(13));
+	std::cout << bit2;
 	return 0;
 
 }

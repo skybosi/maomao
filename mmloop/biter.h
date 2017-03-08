@@ -18,21 +18,32 @@ namespace mm {
 	namespace Utils {
 
 #define SIZE(V) (sizeof(V)/sizeof(char))
-#define BITS(bitstr,bits)  do                    \
-	{                                            \
-		bitstr[7] = ((bits) & 0x1) ? '1' : '0';  \
-		bitstr[6] = ((bits) & 0x2) ? '1' : '0';  \
-		bitstr[5] = ((bits) & 0x4) ? '1' : '0';  \
-		bitstr[4] = ((bits) & 0x8) ? '1' : '0';  \
-		bitstr[3] = ((bits) & 0x10) ? '1' : '0'; \
-		bitstr[2] = ((bits) & 0x20) ? '1' : '0'; \
-		bitstr[1] = ((bits) & 0x40) ? '1' : '0'; \
-		bitstr[0] = ((bits) & 0x80) ? '1' : '0'; \
-		bitstr[8] = '\0';                        \
-	}while(0);
+#define BITS(bitstr,bits)  do                        \
+    {                                                \
+        bitstr[7] = ((bits) & 0x1) ? '1' : '0';      \
+        bitstr[6] = ((bits) & 0x2) ? '1' : '0';      \
+        bitstr[5] = ((bits) & 0x4) ? '1' : '0';      \
+        bitstr[4] = ((bits) & 0x8) ? '1' : '0';      \
+        bitstr[3] = ((bits) & 0x10) ? '1' : '0';     \
+        bitstr[2] = ((bits) & 0x20) ? '1' : '0';     \
+        bitstr[1] = ((bits) & 0x40) ? '1' : '0';     \
+        bitstr[0] = ((bits) & 0x80) ? '1' : '0';     \
+        bitstr[8] = '\0';                            \
+    }while(0);
 #define bsIsBigEndian ((((const int*)"\0\x1\x2\x3\x4\x5\x6\x7")[0] & 255) != 0)
-#define FLAG(_S,_L) (0xFF ^ (0xFF >> (8 -_L) << (_S)))
-		
+#define FLAG(_S,_L) ((0xFF >> (8 -_L) << (_S)))
+#define SWAP(_A,_B)  {_A ^= _B; _B ^= _A; _A ^= _B;}
+#define LE2BE(_D,_L) do                              \
+    {                                                \
+        char* base = _D;                             \
+        char* tail = _D + _L - 1;                    \
+        do {                                         \
+            SWAP(*base, *tail);                      \
+            base++;                                  \
+            tail--;                                  \
+        } while (base < tail);                       \
+    }while(0);
+
 		// bit opeartor
 		class biter
 		{
