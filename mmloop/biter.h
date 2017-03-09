@@ -50,41 +50,36 @@ namespace mm {
 #define HTONL(_L) (bsIsBigEndian)?(_L):(LE2NE(_L,4)) //htonl
 #define NTOHS(_S) (bsIsBigEndian)?(_S):(NE2LE(_S,2)) //ntohs
 #define NTOHL(_L) (bsIsBigEndian)?(_L):(NE2LE(_L,4)) //ntotl
-
+#define ODD   false
+#define EVEN  true
 		// bit opeartor
 		class biter
 		{
 		public:
 			biter();
-			biter(int len, char* data);
+			biter(char* data, int len);
 			biter(int data);
 			biter(long data);
 			~biter();
 		public:
 			friend std::ostream & operator <<(std::ostream &os, const biter& bit);
 			bool   operator ==(const biter& rhs);
+		public:
 			int    get(int index, int len);
 			int    gets(int start, ...);
 			void   sets(int bit,int start, ...);
 			inline int  getbit(int index);
 			inline void setbit(int index, char bit);
+			inline bool parity() { return ( ( (*bits + lens) & 0x1 ) ? (ODD) : (EVEN) ); }
 			static inline bool endian() { return bsIsBigEndian; }
 		private:
+			//7 is control the direction from left to right
 //#define SETBIT(_V,_I)  ((_V) |= (1 << (7-_I)))  //set the _V at _I position is 1
-			inline void SETBIT(char& val, int pos)
-			{
-				(val) |= (1 << (7-pos));  //7 is control the direction from left to right
-			}
+			inline void SETBIT(char& val, int pos) { (val) |= (1 << (7-pos)); }
 //#define CLRBIT(_V,_I)  ((_V) &= ~(1 << (7-_I))) //set the _V at _I position is 0,just clear this bit to 0
-			inline void CLRBIT(char& val, int pos)
-			{
-				(val) &= ~(1 << (7-pos));
-			}
+			inline void CLRBIT(char& val, int pos) { (val) &= ~(1 << (7-pos));}
 //#define GETBIT(_V,_I)  ((_V) &= (1 << (7-_I)))  //error will modified the value,is danger
-			inline void GETBIT(char& val, int pos)
-			{
-				(val) &= (1 << (7-pos));
-			}
+			inline void GETBIT(char& val, int pos) { (val) &= (1 << (7-pos)); }
 		private:
 			int   lens;  //byte number
 			char* bits;  //data bits

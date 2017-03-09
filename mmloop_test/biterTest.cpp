@@ -14,9 +14,9 @@ int biterTest()
 	biter bit;	
 	biter bit2(112350);	
 	char c[4] = "fdj";
-	biter bit3(strlen(c), c);	
+	biter bit3(c, strlen(c));
 	biter bit4(10);
-	biter bit5(strlen(c),"fdj");
+	biter bit5("fdj", strlen(c));
 	std::cout << "\n***** Test op<< ***** " << std::endl;
 	std::cout << "bit: null    : " << bit;
 	std::cout << "bit2(112350) : " << bit2;

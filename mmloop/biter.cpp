@@ -9,7 +9,7 @@ namespace mm {
 			memset(bits, 0, sizeof(char));
 		}
 
-		biter::biter(int len, char* data) : lens(len), bits(data)
+		biter::biter(char* data, int len) : lens(len)
 		{
 			bits = (char*)malloc(lens * sizeof(char));
 			memcpy(bits, data, lens);
@@ -149,17 +149,15 @@ namespace mm {
 
 		inline int  biter::getbit(int index)
 		{			
-			char* base = bits;
 			(index < 0) ? (index += lens * 8) : (index);
-			return ( *( base + (index / 8) ) & ( 1 << ( 7 - (index % 8) ) ) ) ? 1 : 0 ;
-			//return GETBIT(*(base + (index / 8)), 7 - (index % 8)) ? 1 : 0;  //error will modified the value,is danger
+			return ( *(bits + (index / 8) ) & ( 1 << ( 7 - (index % 8) ) ) ) ? 1 : 0 ;
+			//return GETBIT(*(bits + (index / 8)), 7 - (index % 8)) ? 1 : 0;  //error will modified the value,is danger
 		}
 
 		inline void biter::setbit(int index, char bit)
 		{
-			char* base = bits;
 			(index < 0) ? (index += lens * 8) : (index);
-			return (bit) ? ( SETBIT( *(base + index / 8), index % 8 ) ) : ( CLRBIT( *( base + index / 8 ), index % 8 ) );
+			return (bit) ? ( SETBIT( *(bits + index / 8), index % 8 ) ) : ( CLRBIT( *(bits + index / 8 ), index % 8 ) );
 		}
 
 	}
