@@ -1,8 +1,7 @@
 #pragma once
 /*
 	biter:
-	direction alway is 
-	from Left to Right is
+	bit stream direction alway is from Left to Right like:
 	0 - 7, 8 - 15, 16 - 23 ...
 	even thought is big or little Endian
 */
@@ -12,11 +11,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdarg.h>
 #include <iostream>
 
 namespace mm {
 	namespace Utils {
-
+//#define DEBUG
 #define SIZE(V) (sizeof(V)/sizeof(char))
 #define BITS(bitstr,bits)  do                        \
     {                                                \
@@ -33,7 +33,8 @@ namespace mm {
 #define bsIsBigEndian ((((const int*)"\0\x1\x2\x3\x4\x5\x6\x7")[0] & 255) != 0)
 #define FLAG(_S,_L) ((0xFF >> (8 -_L) << (_S)))
 #define SWAP(_A,_B)  {_A ^= _B; _B ^= _A; _A ^= _B;}
-#define LE2BE(_D,_L) do                              \
+//inverted sequence  _D: data pointer  _L: length
+#define INVERT(_D,_L) do                             \
     {                                                \
         char* base = _D;                             \
         char* tail = _D + _L - 1;                    \
@@ -43,6 +44,12 @@ namespace mm {
             tail--;                                  \
         } while (base < tail);                       \
     }while(0);
+#define LE2NE INVERT
+#define NE2LE INVERT
+#define HTONS(_S) (bsIsBigEndian)?(_S):(LE2NE(_S,2)) //htons
+#define HTONL(_L) (bsIsBigEndian)?(_L):(LE2NE(_L,4)) //htonl
+#define NTOHS(_S) (bsIsBigEndian)?(_S):(NE2LE(_S,2)) //ntohs
+#define NTOHL(_L) (bsIsBigEndian)?(_L):(NE2LE(_L,4)) //ntotl
 
 		// bit opeartor
 		class biter
@@ -57,8 +64,10 @@ namespace mm {
 			friend std::ostream & operator <<(std::ostream &os, const biter& bit);
 			bool   operator ==(const biter& rhs);
 			int    get(int index, int len);
-			int    getbit(int index);
-			void   setbit(int index, char bit);
+			int    gets(int start, ...);
+			void   sets(int bit,int start, ...);
+			inline int  getbit(int index);
+			inline void setbit(int index, char bit);
 			static inline bool endian() { return bsIsBigEndian; }
 		private:
 //#define SETBIT(_V,_I)  ((_V) |= (1 << (7-_I)))  //set the _V at _I position is 1

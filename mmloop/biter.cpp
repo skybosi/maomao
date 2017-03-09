@@ -13,21 +13,27 @@ namespace mm {
 		{
 			bits = (char*)malloc(lens * sizeof(char));
 			memcpy(bits, data, lens);
-			if (!bsIsBigEndian) LE2BE(bits, lens);
+#ifndef DEBUG
+			if (!bsIsBigEndian) INVERT(bits, lens);
+#endif
 		}
 
 		biter::biter(int data) :lens(SIZE(data))
 		{
 			bits = (char*)malloc(sizeof(int));
 			memcpy(bits, &data, sizeof(int));
-			if (!bsIsBigEndian) LE2BE(bits, lens);
+#ifndef DEBUG
+			if (!bsIsBigEndian) INVERT(bits, lens);
+#endif
 		}
 
 		biter::biter(long data) :lens(SIZE(data))
 		{
 			bits = (char*)malloc(sizeof(long));
 			memcpy(bits, &data, sizeof(long));
-			if (!bsIsBigEndian) LE2BE(bits, lens);
+#ifndef DEBUG
+			if (!bsIsBigEndian) INVERT(bits, lens);
+#endif
 		}
 
 		biter::~biter()
@@ -114,7 +120,34 @@ namespace mm {
 			}
 		}
 
-		int  biter::getbit(int index)
+		int  biter::gets(int base, ...)
+		{
+			va_list ap;
+			int rt = 0;
+			va_start(ap, base);
+			do {
+				printf("%d, ", base);
+				rt |= getbit(base);
+				rt <<= 1;
+				base = va_arg(ap, int);
+			} while (NULL != base);
+			va_end(ap);
+			return rt;
+		}
+
+		void biter::sets(int bit,int base, ...)
+		{
+			va_list ap;
+			va_start(ap, base);
+			do {
+				printf("%d, ", base);
+				setbit(base, bit);
+				base = va_arg(ap, int);
+			} while (NULL != base);
+			va_end(ap);
+		}
+
+		inline int  biter::getbit(int index)
 		{			
 			char* base = bits;
 			(index < 0) ? (index += lens * 8) : (index);
@@ -122,13 +155,12 @@ namespace mm {
 			//return GETBIT(*(base + (index / 8)), 7 - (index % 8)) ? 1 : 0;  //error will modified the value,is danger
 		}
 
-		void  biter::setbit(int index, char bit)
+		inline void biter::setbit(int index, char bit)
 		{
 			char* base = bits;
 			(index < 0) ? (index += lens * 8) : (index);
 			return (bit) ? ( SETBIT( *(base + index / 8), index % 8 ) ) : ( CLRBIT( *( base + index / 8 ), index % 8 ) );
 		}
-
 
 	}
 }//namespace mm::Utils
