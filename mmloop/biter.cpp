@@ -160,5 +160,21 @@ namespace mm {
 			return (bit) ? ( SETBIT( *(bits + index / 8), index % 8 ) ) : ( CLRBIT( *(bits + index / 8 ), index % 8 ) );
 		}
 
+		unsigned short biter::checksum()
+		{
+			char* base = bits;
+			int size = lens;
+			register long sum = 0;
+			while (size > 1) {
+				sum += *base++;
+				size -= 2;
+			}
+			if (size > 0)
+				sum += *(unsigned char *)base;
+			/*  Fold 32-bit sum to 16 bits */
+			while (sum >> 16)
+				sum = (sum & 0xffff) + (sum >> 16);
+			return ~sum;
+		}
 	}
 }//namespace mm::Utils

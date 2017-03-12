@@ -56,6 +56,7 @@ int biterTest()
 	bit2.setbit(7, 1), bit2.setbit(9, 1), bit2.setbit(13, 0);
 	printf("After  set: bit2[ 7]: %d bit2[ 9]: %d bit2[13]: %d\n", bit2.getbit(7), bit2.getbit(9), bit2.getbit(13));
 	std::cout << "After  set: bit2(112350) : " << bit2;
+	std::cout << "\n***** Test get more ***** " << std::endl;
+	std::cout << "bit3 checksum: " << bit3.checksum() << std::endl;
 	return 0;
-
 }

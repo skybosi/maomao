@@ -72,6 +72,7 @@ namespace mm {
 			inline void setbit(int index, char bit);
 			inline bool parity() { return ( ( (*bits + lens) & 0x1 ) ? (ODD) : (EVEN) ); }
 			static inline bool endian() { return bsIsBigEndian; }
+			unsigned short checksum();
 		private:
 			//7 is control the direction from left to right
 //#define SETBIT(_V,_I)  ((_V) |= (1 << (7-_I)))  //set the _V at _I position is 1
