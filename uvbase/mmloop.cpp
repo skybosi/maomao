@@ -1,7 +1,7 @@
 #include "mmloop.h"
 
 namespace mm {
-namespace Loop {
+namespace uvbase {
 
 	// -----------------------------
 	// class Loop
@@ -327,10 +327,10 @@ namespace Loop {
 		uv_signal_t* signal = (uv_signal_t *)context_ptr();
 		switch (sigmode)
 		{
-		case mm::Loop::Signal::DEFAULT:
+		case mm::uvbase::Signal::DEFAULT:
 			return uv_signal_start(signal, _cbSignal, signum);
 			break;
-		case mm::Loop::Signal::ONESHOT:
+		case mm::uvbase::Signal::ONESHOT:
 			return uv_signal_start_oneshot(signal, _cbSignal, signum);
 			break;
 		default:
@@ -357,6 +357,5 @@ namespace Loop {
 		}
 	}
 
-	}//namespace Loop
-
-}//namespace mm
+	}
+}//namespace mm::uvbase

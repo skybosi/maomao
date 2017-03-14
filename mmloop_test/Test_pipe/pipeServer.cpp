@@ -2,7 +2,7 @@
 #include <string.h>
 #include "mmloop_files.h"
 
-using namespace mm::Loop;
+using namespace mm::uvbase;
 
 class pipeServer:public Pipe
 {

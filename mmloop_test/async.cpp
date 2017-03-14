@@ -2,7 +2,7 @@
 
 #include "mmloop.h"
 
-using namespace mm::Loop;
+using namespace mm::uvbase;
 
 class MyAsync : public Async
 {

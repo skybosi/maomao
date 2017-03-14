@@ -1,7 +1,7 @@
 
 #include "mmloop_utils.h"
 #include "mmloop.h"
-using namespace mm::Loop;
+using namespace mm::uvbase;
 
 int bufferTest()
 {

@@ -7,7 +7,7 @@
 
 
 namespace mm {
-	namespace Loop {
+	namespace uvbase {
 		//uv_buf_t
 		class buffer
 		{
@@ -72,7 +72,7 @@ namespace mm {
 
 
 	}
-}//namespace mm::Loop
+}//namespace mm::uvbase
 
 
 

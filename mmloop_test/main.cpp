@@ -23,7 +23,7 @@ extern int udpsendTest(int argc, char* argv[]);
 extern int bufferTest();
 extern int rusageTest();
 extern int biterTest();
-using namespace mm::Loop;
+using namespace mm::uvbase;
 
 //for switch case use string
 //http://blog.csdn.net/canguanxihu/article/details/45640999

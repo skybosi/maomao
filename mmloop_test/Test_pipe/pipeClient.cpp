@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 #include "mmloop_files.h"
-using namespace mm::Loop;
+using namespace mm::uvbase;
 
 
-using namespace mm::Loop;
+using namespace mm::uvbase;
 class pipeClient:public Pipe
 {
 public:

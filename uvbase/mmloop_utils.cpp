@@ -1,7 +1,7 @@
 #include "mmloop_utils.h"
 
 namespace mm {
-	namespace Loop {
+	namespace uvbase {
 
 		// -----------------------------
 		// class buffer
@@ -158,4 +158,4 @@ namespace mm {
 			return _count;
 		}
 	}
-}//namespace mm::Loop
+}//namespace mm::uvbase

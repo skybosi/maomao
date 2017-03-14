@@ -5,7 +5,7 @@
 #include "mmloop_utils.h"
 #include <stdio.h>
 
-using namespace mm::Loop;
+using namespace mm::uvbase;
 
 class udpsend :public UDP
 {

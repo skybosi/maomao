@@ -1,7 +1,7 @@
 #include "mmloop_files.h"
 
 namespace mm {
-	namespace Loop {
+	namespace uvbase {
 
 		// -----------------------------
 		// class File
@@ -233,4 +233,4 @@ namespace mm {
 		}
 
 	}
-} // namespace mm::Loop
+} // namespace mm::uvbase

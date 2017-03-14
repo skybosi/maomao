@@ -5,7 +5,7 @@
 #include "mmloop.h"
 
 namespace mm {
-	namespace Loop {
+	namespace uvbase {
 class MM_LOOP_API Mutex;
 class MM_LOOP_API Condition;
 		// -----------------------------
@@ -71,6 +71,6 @@ class MM_LOOP_API Condition;
 		};
 
 	}
-} // namespace mm::Loop
+} // namespace mm::uvbase
 
 #endif // mmloop_lock.h

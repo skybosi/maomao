@@ -7,11 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "maomao", "maomao\maomao.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "eloop", "..\eloop\eloop.vcxproj", "{0DD1A94D-D423-40CA-A7AC-4A880F1DA1D8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mmloop", "mmloop\mmloop.vcxproj", "{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}"
-	ProjectSection(ProjectDependencies) = postProject
-		{33066374-88CB-CB8D-15DA-61032886329A} = {33066374-88CB-CB8D-15DA-61032886329A}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libuv", "libuv\libuv.vcxproj", "{33066374-88CB-CB8D-15DA-61032886329A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mmloop_test", "mmloop_test\mmloop_test.vcxproj", "{F4F7C707-BE7E-4F11-950D-F100CAAD0BCC}"
@@ -21,6 +16,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mmloop_test", "mmloop_test\
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "run-tests", "libuv\run-tests.vcxproj", "{FEE80AB5-40E5-7518-F554-DA72B89E03AE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "uvbase", "uvbase\uvbase.vcxproj", "{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{33066374-88CB-CB8D-15DA-61032886329A} = {33066374-88CB-CB8D-15DA-61032886329A}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,14 +46,6 @@ Global
 		{0DD1A94D-D423-40CA-A7AC-4A880F1DA1D8}.Release|x64.Build.0 = Release|x64
 		{0DD1A94D-D423-40CA-A7AC-4A880F1DA1D8}.Release|x86.ActiveCfg = Release|Win32
 		{0DD1A94D-D423-40CA-A7AC-4A880F1DA1D8}.Release|x86.Build.0 = Release|Win32
-		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Debug|x64.ActiveCfg = Debug|x64
-		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Debug|x64.Build.0 = Debug|x64
-		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Debug|x86.ActiveCfg = Debug|Win32
-		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Debug|x86.Build.0 = Debug|Win32
-		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Release|x64.ActiveCfg = Release|x64
-		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Release|x64.Build.0 = Release|x64
-		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Release|x86.ActiveCfg = Release|Win32
-		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Release|x86.Build.0 = Release|Win32
 		{33066374-88CB-CB8D-15DA-61032886329A}.Debug|x64.ActiveCfg = Debug|x64
 		{33066374-88CB-CB8D-15DA-61032886329A}.Debug|x64.Build.0 = Debug|x64
 		{33066374-88CB-CB8D-15DA-61032886329A}.Debug|x86.ActiveCfg = Debug|Win32
@@ -76,6 +68,14 @@ Global
 		{FEE80AB5-40E5-7518-F554-DA72B89E03AE}.Release|x64.ActiveCfg = Release|Win32
 		{FEE80AB5-40E5-7518-F554-DA72B89E03AE}.Release|x86.ActiveCfg = Release|Win32
 		{FEE80AB5-40E5-7518-F554-DA72B89E03AE}.Release|x86.Build.0 = Release|Win32
+		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Debug|x64.ActiveCfg = Debug|x64
+		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Debug|x64.Build.0 = Debug|x64
+		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Debug|x86.ActiveCfg = Debug|Win32
+		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Debug|x86.Build.0 = Debug|Win32
+		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Release|x64.ActiveCfg = Release|x64
+		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Release|x64.Build.0 = Release|x64
+		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Release|x86.ActiveCfg = Release|Win32
+		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

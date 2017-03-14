@@ -1,7 +1,7 @@
 #include "mmloop_MT.h"
 
 namespace mm {
-	namespace Loop {
+	namespace uvbase {
 
 		ThreadPool::ThreadPool(Loop& loop)
 			:_loop(loop),
@@ -34,4 +34,4 @@ namespace mm {
 		}
 
 	}
-} // namespace mm::Loop
+} // namespace mm::uvbase

@@ -2,7 +2,7 @@
 #define __UDP_CLIENT_H__
 
 #include "mmloop_net.h"
-using namespace mm::Loop;
+using namespace mm::uvbase;
 
 
 class udpClient:public UDP

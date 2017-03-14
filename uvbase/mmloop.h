@@ -7,7 +7,7 @@
 #include "uv.h"
 
 namespace mm {
-namespace Loop {
+namespace uvbase {
 	class MM_LOOP_API Loop;
 	class MM_LOOP_API Handle;
 	class MM_LOOP_API Idle;
@@ -309,6 +309,6 @@ namespace Loop {
 	};
 
 	}
-} // namespace mm::Loop
+} // namespace mm::uvbase
 
 #endif // mmloop.h

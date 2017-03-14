@@ -9,7 +9,7 @@
 
 
 namespace mm {
-	namespace Loop {
+	namespace uvbase {
 class MM_LOOP_API FileEvent;
 class MM_LOOP_API File;
 class MM_LOOP_API Pipe;
@@ -164,7 +164,7 @@ private:
 };
 
 	}
-} // namespace mm::Loop
+} // namespace mm::uvbase
 
 #endif // mmloop_files.h
 

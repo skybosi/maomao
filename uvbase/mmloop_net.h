@@ -8,7 +8,7 @@
 #include <fcntl.h>
 
 namespace mm {
-	namespace Loop {
+	namespace uvbase {
 class MM_LOOP_API Stream;
 class MM_LOOP_API TCP;
 class MM_LOOP_API UDP;
@@ -172,6 +172,6 @@ class MM_LOOP_API DNS;
 
 		};
 	}
-}//namespace mm::Loop
+}//namespace mm::uvbase
 
 #endif //mmloop_net.h

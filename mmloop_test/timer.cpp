@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "mmloop_utils.h"
 
-using namespace mm::Loop;
+using namespace mm::uvbase;
 
 class MyTimer : public Timer
 {

@@ -1,6 +1,6 @@
 #include "mmloop_net.h"
 #include "mmloop.h"
-using namespace mm::Loop;
+using namespace mm::uvbase;
 
 class MyDNS : public DNS
 {

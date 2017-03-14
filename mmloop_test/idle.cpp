@@ -1,6 +1,6 @@
 #include "mmloop.h"
 
-using namespace mm::Loop;
+using namespace mm::uvbase;
 
 class MyIdle : public Idle
 {

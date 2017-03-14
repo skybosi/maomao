@@ -2,7 +2,7 @@
 #define __TCP_SERVER_H__
 
 #include "mmloop_net.h"
-using namespace mm::Loop;
+using namespace mm::uvbase;
 
 
 class tcpServer:public TCP

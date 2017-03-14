@@ -3,7 +3,7 @@
 
 #include "mmloop_net.h"
 //#include "Pointer.h"
-using namespace mm::Loop;
+using namespace mm::uvbase;
 
 
 class tcpClient:public TCP

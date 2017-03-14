@@ -1,7 +1,7 @@
 #include "mmloop_net.h"
 
 namespace mm {
-	namespace Loop {
+	namespace uvbase {
 
 		// -----------------------------
 		// class Stream
@@ -494,4 +494,4 @@ namespace mm {
 			delete resolver;
 		}
 	}
-}
+} //namespace mm::uvbase

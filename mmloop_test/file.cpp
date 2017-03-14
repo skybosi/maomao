@@ -3,7 +3,7 @@
 //#include <fcntl.h>
 
 
-using namespace mm::Loop;
+using namespace mm::uvbase;
 
 class MyFileEvent : public FileEvent
 {

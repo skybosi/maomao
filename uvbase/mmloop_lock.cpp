@@ -1,7 +1,7 @@
 #include "mmloop_lock.h"
 
 namespace mm {
-	namespace Loop {
+	namespace uvbase {
 
 		// -----------------------------
 		// class Mutex
@@ -76,4 +76,4 @@ namespace mm {
 		}
 
 	}
-} // namespace mm::Loop
+} // namespace mm::uvbase

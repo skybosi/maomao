@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "mmloop.h"
 namespace mm {
-	namespace Loop {
+	namespace uvbase {
 class MM_LOOP_API ThreadPool;
 	
 		// ---------------------------------------
@@ -30,6 +30,6 @@ class MM_LOOP_API ThreadPool;
 		};
 
 	}
-} // namespace mm::Loop
+} // namespace mm::uvbase
 
 #endif // mmloop_MT.h
