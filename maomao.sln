@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "maomao", "maomao\maomao.vcxproj", "{B8804757-6322-485D-881D-F306F900826A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C07F4C8B-E01F-41D5-BD53-9E58833C08F5} = {C07F4C8B-E01F-41D5-BD53-9E58833C08F5}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "eloop", "..\eloop\eloop.vcxproj", "{0DD1A94D-D423-40CA-A7AC-4A880F1DA1D8}"
 EndProject
