@@ -18,11 +18,17 @@ namespace mm {
 			transmitter(Type type = SERVER);
 			~transmitter();
 		public:
+			char* user();
+		public:
+			/* post */
+			virtual void writer(void* buf,size_t count);
+			/* get */
+			virtual void reader(void* buf,size_t count);
+		private:
 			/* will be inpmliment a client */
 			virtual void OnConnected(mmerrno status);
 			/* will be inpmliment a server */
 			virtual void doAccept(mmerrno status);
-		public:
 			/* I/O ,if read a data,will be save a buf*/
 			virtual void OnRead(ssize_t nread, const char *buf);
 			/* I/O ,if write a data*/

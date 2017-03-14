@@ -10,6 +10,5 @@ int server(int argc, char* argv[])
 	server.bind4("127.0.0.1", 9130);
 	server.listen();
 	loop.run(Loop::Default);
-	getchar();
 	return 0;
 }
