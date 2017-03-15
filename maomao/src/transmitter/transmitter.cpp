@@ -82,7 +82,7 @@ namespace mm {
 		void transmitter::OnRead(ssize_t nread, const char *buf)
 		{
 			if (nread < 0) {
-				fprintf(stderr, "Read error %s\n", Handle::errType(nread));
+				fprintf(stderr, "%s Read error %s\n", user(),Handle::errType(nread));
 				close();
 				return;
 			}

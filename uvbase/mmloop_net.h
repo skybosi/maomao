@@ -23,7 +23,7 @@ class MM_LOOP_API DNS;
 
 		public:
 			int shutdown();
-			int listen();
+			int wait();
 			int accept(Stream* client);
 			int read_start();
 			int read_stop();
@@ -76,14 +76,12 @@ class MM_LOOP_API DNS;
 			int nodelay(int enable);
 			int keepalive(int enable, unsigned int delay);
 			int simultaneous_accepts(int enable);
-			int bind4(const char *ipv4, int port);
-			int bind6(const char *ipv6, int port);
+			int bind(const char *ip, int port);
 			int getsockname(struct sockaddr *name, int *namelen);
 			int getpeername(struct sockaddr *name, int *namelen);
 			void getlocaleIpPort(char* ip, int& port);
 			void getpeerIpPort(char* ip, int& port);
-			int connect4(const char *ipv4, int prot);
-			int connect6(const char *ipv6, int port);
+			int  connect(const char *ip, int port);
 
 		protected:
 			// TODO: must enumerate all the status in the class
@@ -92,8 +90,9 @@ class MM_LOOP_API DNS;
 		private:
 			int connect(const struct sockaddr *addr);
 			int bind(const sockaddr *addr, unsigned int flags);
-			static void _cbConnect(uv_connect_t *req, int status);
 
+		private:
+			static void _cbConnect(uv_connect_t *req, int status);
 		};
 
 
@@ -117,9 +116,6 @@ class MM_LOOP_API DNS;
 			int init(Loop &loop);
 			int init_ex(Loop &loop, unsigned int flags);
 			int open(sock_t sock);
-			int bind4(const char *ipv4, int port, unsigned int flags);
-			int bind6(const char *ipv6, int port, unsigned int flags);
-
 			int getsockname(struct sockaddr *name, int *namelen);
 			int set_membership(const char *multicast_addr, const char *interface_addr, membership_t membership);
 			int set_multicast_loop(int on);
@@ -127,16 +123,11 @@ class MM_LOOP_API DNS;
 			int set_multicast_interface(const char *interface_addr);
 			int set_broadcast(int on);
 			int set_ttl(int ttl);
-
 			void get_ip4_name(const struct sockaddr_in* src, char* dst, size_t size);
-
-			int send4(const char *buf, size_t length, const char *ipv4, int port);
-			int send6(const char *buf, size_t length, const char *ipv6, int port);
-			int send(const char *buf, size_t length, const struct sockaddr *addr);
-
-			int try_send4(const char *buf, size_t length, const char *ipv4, int port);
-			int try_send6(const char *buf, size_t length, const char *ipv6, int port);
-
+			int bind(const char *ip, int port, unsigned int flags);
+			int send(const char *buf, size_t length, const char *ip, int port);
+			int try_send(const char *buf, size_t length, const char *ip, int port);
+			int bind(const struct sockaddr *addr, unsigned int flags);
 			int recv_start();
 			int recv_stop();
 
@@ -145,11 +136,9 @@ class MM_LOOP_API DNS;
 			virtual void OnSent(mmerrno status) {}
 			//	virtual void OnAllocate(UDP *self, size_t suggested_size, uv_buf_t *buf) {}
 			virtual void OnReceived(ssize_t nread, const char *buf, const struct sockaddr *addr, unsigned flags) {}
-
-		private:
-			int bind(const struct sockaddr *addr, unsigned int flags);
+			int send(const char *buf, size_t length, const struct sockaddr *addr);
 			int try_send(const char *buf, size_t length, const struct sockaddr *addr);
-
+		private:
 			static void _cbSent(uv_udp_send_t *req, int status);
 			static void _cbAlloc(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf);
 			static void _cbRecv(uv_udp_t *udp, ssize_t nread, const uv_buf_t *buf, const struct sockaddr *addr, unsigned flags);

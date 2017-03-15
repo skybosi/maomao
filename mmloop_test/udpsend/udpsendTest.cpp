@@ -62,7 +62,7 @@ int udpsendTest(int argc,char* argv[])
 
 	udpsend udp(ip.c_str(),port);
 	udp.init(loop);
-	udp.bind4("127.0.0.1",9130,UDP::Reuseaddr);
+	udp.bind("127.0.0.1",9130,UDP::Reuseaddr);
 
 	FileHandle* file = new FileHandle(loop,&udp,datasize,intervalTime,startParket);
 	file->open(filename.c_str(),File::FileFlags::RDONLY, File::FileMode::READ);

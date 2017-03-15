@@ -9,8 +9,8 @@ int tcpServerTest()
 
 
 	server.init(loop);
-	server.bind4("127.0.0.1", 9130);
-	server.listen();	
+	server.bind("127.0.0.1", 9130);
+	server.wait();	
 
 	loop.run(Loop::Default);
 	getchar();

@@ -15,7 +15,7 @@ udpsend::~udpsend()
 
 int udpsend::NativeSend4(const char *buf, size_t length)
 {
-	return send4(buf,length,_destIp,_destPort);
+	return send(buf,length,_destIp,_destPort);
 }
 
 void udpsend::OnSent(mmerrno status)

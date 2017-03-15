@@ -54,7 +54,7 @@ int pipeServerTest()
 		return 1;
 	}
 
-	r = server.listen();
+	r = server.wait();
 	if (r != 0)
 	{
 		fprintf(stderr, "Listen error %s\n", pipeServer::errType(r));
