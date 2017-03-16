@@ -15,11 +15,14 @@ namespace mm {
 				BOTH_SER,                  /* server or client,Tend to server */
 				BOTH_CLI,                  /* server or client,Tend to client */
 			};
+			const char* _type[5] = {"server","client","both_ser","both_cli","unknow"};
 			transmitter(Type type = SERVER);
 			~transmitter();
 		public:
-			char* user();
+			inline const char* user() { return _type[userType]; }
 		public:
+			void Packer(void* data,int size);
+			void Unpack(void* data, int size);
 			/* post */
 			virtual void writer(void* buf,size_t count);
 			/* get */

@@ -12,27 +12,12 @@ namespace mm {
 		{
 		}
 
-		char * transmitter::user()
+		void transmitter::Packer(void * data, int size)
 		{
-			switch (this->userType)
-			{
-			case SERVER:
-				return "server";
-				break;
-			case CLIENT:
-				return "client";
-				break;
-			case BOTH_SER:
-				return "both_ser";
-				break;
-			case BOTH_CLI:
-				return "both_cli";
-				break;
-			default:
-				return "Unknowed";
-				break;
-			}
-			return nullptr;
+		}
+
+		void transmitter::Unpack(void * data, int size)
+		{
 		}
 
 		void transmitter::writer(void* buf, size_t count)

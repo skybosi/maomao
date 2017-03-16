@@ -16,6 +16,8 @@ class MM_LOOP_API DNS;
 		// -----------------------------
 		// class Stream
 		// -----------------------------
+#define isIPV4(ip) (strchr((ip), '.'))
+
 		class Stream : public Handle
 		{
 		protected:

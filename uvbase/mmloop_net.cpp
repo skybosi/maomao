@@ -1,4 +1,3 @@
-#include <string>
 #include "mmloop_net.h"
 
 namespace mm {
@@ -98,8 +97,7 @@ namespace mm {
 			}
 		}
 
-		void Stream::_cbAlloc(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
-		{
+		void Stream::_cbAlloc(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf) {
 			buf->base = NULL;
 			buf->len = 0;
 			Stream* self = static_cast<Stream *>(handle->data);
@@ -162,8 +160,8 @@ namespace mm {
 			uv_tcp_t* tcp = (uv_tcp_t *)context_ptr();
 			return uv_tcp_open(tcp, sock);
 		}
-		int TCP::connected_open(sock_t sock)
-		{
+
+		int TCP::connected_open(sock_t sock) {
 			uv_tcp_t* tcp = (uv_tcp_t *)context_ptr();
 			return uv_tcp_open(tcp, sock);
 			//return uv_tcp_connected_open(tcp,sock);//version 1.9.1
@@ -198,17 +196,17 @@ namespace mm {
 			return uv_tcp_bind(tcp, addr, flags);
 		}
 
-		int TCP::bind(const char *ip, int port) {
-			if (strchr(ip, ':')) {
-				struct sockaddr_in6 addr;
-				int r = uv_ip6_addr(ip, port, &addr);
+		int TCP::bind(const char *ip, int port)	{
+			if (isIPV4(ip)) {
+				struct sockaddr_in addr;
+				int r = uv_ip4_addr(ip, port, &addr);
 				if (r < 0)
 					return r;
 				return bind((const sockaddr *)&addr, 0);
 			}
 			else {
-				struct sockaddr_in addr;
-				int r = uv_ip4_addr(ip, port, &addr);
+				struct sockaddr_in6 addr;
+				int r = uv_ip6_addr(ip, port, &addr);
 				if (r < 0)
 					return r;
 				return bind((const sockaddr *)&addr, 0);
@@ -220,8 +218,7 @@ namespace mm {
 			return uv_tcp_getsockname(tcp, name, namelen);
 		}
 
-		void TCP::getlocaleIpPort(char* ip, int& port)
-		{
+		void TCP::getlocaleIpPort(char* ip, int& port) {
 			struct sockaddr localename;
 			int namelen = sizeof localename;
 			getsockname(&localename, &namelen);
@@ -235,8 +232,7 @@ namespace mm {
 			return uv_tcp_getpeername(tcp, name, namelen);
 		}
 
-		void TCP::getpeerIpPort(char* ip, int& port)
-		{
+		void TCP::getpeerIpPort(char* ip, int& port) {
 			struct sockaddr peername;
 			int namelen = sizeof peername;
 			getpeername(&peername, &namelen);
@@ -252,16 +248,16 @@ namespace mm {
 		}
 
 		int TCP::connect(const char *ip, int port) {
-			if (strchr(ip, ':')) {
-				struct sockaddr_in6 addr;
-				int r = uv_ip6_addr(ip, port, &addr);
+			if (isIPV4(ip)) {
+				struct sockaddr_in addr;
+				int r = uv_ip4_addr(ip, port, &addr);
 				if (r < 0)
 					return r;
 				return connect((const struct sockaddr *)&addr);
 			}
 			else {
-				struct sockaddr_in addr;
-				int r = uv_ip4_addr(ip, port, &addr);
+				struct sockaddr_in6 addr;
+				int r = uv_ip6_addr(ip, port, &addr);
 				if (r < 0)
 					return r;
 				return connect((const struct sockaddr *)&addr);
@@ -306,18 +302,17 @@ namespace mm {
 			return uv_udp_bind(udp, addr, flags);
 		}
 
-		int UDP::bind(const char *ip, int port, unsigned int flags)
-		{
-			if (strchr(ip, ':')) {
-				struct sockaddr_in6 addr;
-				int r = uv_ip6_addr(ip, port, &addr);
+		int UDP::bind(const char *ip, int port, unsigned int flags) {
+			if (isIPV4(ip)) {
+				struct sockaddr_in addr;
+				int r = uv_ip4_addr(ip, port, &addr);
 				if (r < 0)
 					return r;
 				return bind((const struct sockaddr *)&addr, flags);
 			}
 			else {
-				struct sockaddr_in addr;
-				int r = uv_ip4_addr(ip, port, &addr);
+				struct sockaddr_in6 addr;
+				int r = uv_ip6_addr(ip, port, &addr);
 				if (r < 0)
 					return r;
 				return bind((const struct sockaddr *)&addr, flags);
@@ -359,59 +354,54 @@ namespace mm {
 			return uv_udp_set_ttl(udp, ttl);
 		}
 
-		void UDP::get_ip4_name(const struct sockaddr_in* src, char* dst, size_t size)
-		{
+		void UDP::get_ip4_name(const struct sockaddr_in* src, char* dst, size_t size) {
 			uv_ip4_name(src, dst, size);
 		}
 
-		int UDP::send(const char *buf, size_t length, const struct sockaddr *addr)
-		{
+		int UDP::send(const char *buf, size_t length, const struct sockaddr *addr) {
 			uv_buf_t sendbuf = uv_buf_init((char *)buf, length);
 			uv_udp_send_t* req = new uv_udp_send_t;
 			uv_udp_t* udp = (uv_udp_t *)context_ptr();
 			return uv_udp_send(req, udp, &sendbuf, 1, addr, _cbSent);
 		}
 
-		int UDP::send(const char *buf, size_t length, const char *ip, int port) 
-		{
-			if (strchr(ip, ':')) {
-				struct sockaddr_in6 addr;
-				int r = uv_ip6_addr(ip, port, &addr);
-				if (r < 0)
-					return r;
-				return send(buf, length, (const struct sockaddr *)&addr);
-			}
-			else {
+		int UDP::send(const char *buf, size_t length, const char *ip, int port) {
+			if (isIPV4(ip)) {
 				struct sockaddr_in send_addr;
 				int r = uv_ip4_addr(ip, port, &send_addr);
 				if (r < 0)
 					return r;
 				return send(buf, length, (const struct sockaddr *)&send_addr);
 			}
+			else {
+				struct sockaddr_in6 addr;
+				int r = uv_ip6_addr(ip, port, &addr);
+				if (r < 0)
+					return r;
+				return send(buf, length, (const struct sockaddr *)&addr);
+			}
 		}
 
-		int UDP::try_send(const char *buf, size_t length, const struct sockaddr *addr)
-		{
+		int UDP::try_send(const char *buf, size_t length, const struct sockaddr *addr) {
 			uv_buf_t sendbuf = uv_buf_init((char *)buf, length);
 			uv_udp_t* udp = (uv_udp_t *)context_ptr();
 			return uv_udp_try_send(udp, &sendbuf, 1, addr);
 		}
 
-		int UDP::try_send(const char *buf, size_t length, const char *ip, int port)
-		{
-			if (strchr(ip, ':')) {
-				struct sockaddr_in6 addr;
-				int r = uv_ip6_addr(ip, port, &addr);
-				if (r < 0)
-					return r;
-				return try_send(buf, length, (const struct sockaddr *)&addr);
-			}
-			else {
+		int UDP::try_send(const char *buf, size_t length, const char *ip, int port) {
+			if (isIPV4(ip)) {
 				struct sockaddr_in send_addr;
 				int r = uv_ip4_addr(ip, port, &send_addr);
 				if (r < 0)
 					return r;
 				return try_send(buf, length, (const struct sockaddr *)&send_addr);
+			}
+			else {
+				struct sockaddr_in6 addr;
+				int r = uv_ip6_addr(ip, port, &addr);
+				if (r < 0)
+					return r;
+				return try_send(buf, length, (const struct sockaddr *)&addr);
 			}
 		}
 
@@ -435,15 +425,13 @@ namespace mm {
 			delete req;
 		}
 
-		void UDP::_cbAlloc(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf)
-		{
+		void UDP::_cbAlloc(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf) {
 			buf->base = (char*)malloc(suggested_size);
 			buf->len = suggested_size;
 			memset(buf->base, 0, buf->len);
 		}
 
-		void UDP::_cbRecv(uv_udp_t *handle, ssize_t nread, const uv_buf_t *buf, const struct sockaddr *addr, unsigned flags) 
-		{
+		void UDP::_cbRecv(uv_udp_t *handle, ssize_t nread, const uv_buf_t *buf, const struct sockaddr *addr, unsigned flags) {
 			UDP* self = static_cast<UDP *>(handle->data);
 			if (self != NULL) {
 				/*				if (nread < 0) {
@@ -465,15 +453,13 @@ namespace mm {
 		{
 		}
 
-		int DNS::getAddrInfo(Loop &loop, const char* node, const char* service, const struct addrinfo* hints)
-		{
+		int DNS::getAddrInfo(Loop &loop, const char* node, const char* service, const struct addrinfo* hints) {
 			uv_getaddrinfo_t *req = new uv_getaddrinfo_t;
 			req->data = reinterpret_cast<void *>(this);
 			return uv_getaddrinfo(loop.context_ptr(), req, _cbResolved, node, service, hints);
 		}
 
-		void DNS::_cbResolved(uv_getaddrinfo_t *resolver, int status, struct addrinfo *res)
-		{
+		void DNS::_cbResolved(uv_getaddrinfo_t *resolver, int status, struct addrinfo *res)	{
 			DNS *h = static_cast<DNS *>(resolver->data);
 			if (NULL != h)
 			{
