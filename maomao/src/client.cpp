@@ -3,10 +3,9 @@ using namespace mm::Transmitter;
 
 int client(int argc,char* argv[]) 
 {
-	Loop loop(false);
-	transmitter client(Tran::Type::CLIENT);
-	client.init(loop);
-	client.connect("127.0.0.1", 9130);
-	loop.run(Loop::Default);
+	tTM client;
+	//uTM client;
+	client.Relate("127.0.0.1", 9130, ITM::CLIENT);
+	//client.Sendto();
 	return 0;
 }
